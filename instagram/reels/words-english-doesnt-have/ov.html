@@ -1,0 +1,45 @@
+<!doctype html><html><head><meta charset="utf-8"><style>
+@font-face{font-family:Satoshi;src:url(file:///root/.local/share/fonts/reel-fonts/Satoshi-Black.otf);font-weight:900}
+@font-face{font-family:Satoshi;src:url(file:///root/.local/share/fonts/reel-fonts/Satoshi-Bold.otf);font-weight:700}
+@font-face{font-family:Satoshi;src:url(file:///root/.local/share/fonts/reel-fonts/Satoshi-Medium.otf);font-weight:500}
+@font-face{font-family:SerifJP;src:url(file:///root/.local/share/fonts/reel-fonts/NotoSerifJP-900.ttf);font-weight:900}
+@font-face{font-family:Fraunces;src:url(file:///root/.local/share/fonts/reel-fonts/Fraunces-700.ttf);font-weight:700}
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{width:1080px;height:1920px;background:transparent;overflow:hidden;font-family:Satoshi,'Noto Color Emoji',sans-serif;color:#fff}
+#grad{position:absolute;left:0;right:0;bottom:0;height:1050px;background:linear-gradient(to bottom,rgba(0,0,0,0),rgba(10,6,2,.55) 35%,rgba(10,6,2,.82));opacity:0}
+#topg{position:absolute;left:0;right:0;top:0;height:420px;background:linear-gradient(to top,rgba(0,0,0,0),rgba(10,6,2,.55))}
+#tag{position:absolute;top:150px;left:0;right:0;text-align:center;font-weight:700;font-size:34px;letter-spacing:4px;text-transform:uppercase;color:#FFE3C4;opacity:.95}
+#tag b{color:#FF8A57}
+#hook{position:absolute;top:220px;left:0;right:0;white-space:nowrap;text-align:center;font-weight:900;font-size:60px;line-height:1.1;text-shadow:0 4px 24px rgba(0,0,0,.6)}
+#kanji{position:absolute;top:1060px;left:0;right:0;text-align:center;font-family:SerifJP;font-weight:900;font-size:230px;line-height:1;letter-spacing:10px;text-shadow:0 8px 40px rgba(0,0,0,.6)}
+#kanji span{display:inline-block}
+#read{position:absolute;top:1330px;left:0;right:0;text-align:center;font-family:Fraunces;font-weight:700;font-style:italic;font-size:78px;color:#FFD9B8}
+#mean{position:absolute;top:1470px;left:70px;right:70px;text-align:center;font-weight:700;font-size:56px;line-height:1.2}
+#mean b{color:#FF8A57}
+#cta{position:absolute;top:1660px;left:0;right:0;text-align:center}
+#cta span{display:inline-block;background:#FF6B35;color:#fff;font-weight:900;font-size:46px;padding:18px 40px;border-radius:999px;box-shadow:0 10px 30px rgba(0,0,0,.4)}
+#hand{position:absolute;bottom:60px;right:70px;font-weight:700;font-size:32px;opacity:.85}
+</style></head><body>
+<div id="topg"></div><div id="grad"></div>
+<div id="tag">Words English doesn't have · <b>#1</b></div>
+<div id="hook">Japanese has a word for this 👀</div>
+<div id="kanji"><span>積</span><span>ん</span><span>読</span></div>
+<div id="read">tsundoku</div>
+<div id="mean">buying books…<br>and <b>never reading them</b> 😂</div>
+<div id="cta"><span>How many on YOUR shelf? 👇</span></div>
+<div id="hand">@raj_in_jp</div>
+<script>
+const cl=x=>Math.min(Math.max(x,0),1), ease=x=>1-Math.pow(1-cl(x),3);
+const $=id=>document.getElementById(id);
+window.TOTAL=12.5;
+function fade(id,at,t,d=0.4,dy=30){const e=$(id),p=ease((t-at)/d);e.style.opacity=t<at?0:p;e.style.transform=`translateY(${(1-p)*dy}px)`;}
+window.render=t=>{
+  fade('hook',0.9,t,0.4,-20); $('hook').style.opacity = t<2.6 ? $('hook').style.opacity : Math.max(0,1-(t-2.6)/0.4);
+  $('grad').style.opacity=ease((t-2.4)/0.6);
+  // brush-write: each character wipes in top->bottom with blur
+  [...$('kanji').children].forEach((s,i)=>{const at=2.9+i*0.28, p=ease((t-at)/0.45);
+    s.style.opacity=t<at?0:1; s.style.clipPath=`inset(0 0 ${(1-p)*100}% 0)`; s.style.filter=`blur(${(1-p)*8}px)`; s.style.transform=`scale(${1.12-0.12*p})`;});
+  fade('read',3.9,t); fade('mean',4.1,t);
+  fade('cta',8.0,t,0.35,40); if(t>8.4){$('cta').style.transform=`scale(${1+0.03*Math.sin((t-8.4)*5)})`;}
+};
+</script></body></html>
