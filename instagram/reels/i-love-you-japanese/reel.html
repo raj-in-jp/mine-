@@ -1,0 +1,87 @@
+<!doctype html><html><head><meta charset="utf-8"><style>
+@font-face{font-family:Satoshi;src:url(file:///root/.local/share/fonts/reel-fonts/Satoshi-Black.otf);font-weight:900}
+@font-face{font-family:Satoshi;src:url(file:///root/.local/share/fonts/reel-fonts/Satoshi-Bold.otf);font-weight:700}
+@font-face{font-family:Satoshi;src:url(file:///root/.local/share/fonts/reel-fonts/Satoshi-Medium.otf);font-weight:500}
+@font-face{font-family:SerifJP;src:url(file:///root/.local/share/fonts/reel-fonts/NotoSerifJP-900.ttf);font-weight:900}
+@font-face{font-family:SerifJP;src:url(file:///root/.local/share/fonts/reel-fonts/NotoSerifJP-700.ttf);font-weight:700}
+@font-face{font-family:Play;src:url(file:///root/.local/share/fonts/reel-fonts/PlayfairDisplay-Italic.ttf)}
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{width:1080px;height:1920px;overflow:hidden;background:#070B1C;font-family:Satoshi,'Noto Color Emoji',sans-serif;color:#fff}
+#sky{position:absolute;inset:0;background:radial-gradient(ellipse at 50% 30%,#22305E 0%,#121A3A 45%,#070B1C 85%)}
+#stars i{position:absolute;width:4px;height:4px;border-radius:50%;background:#fff}
+#moon{position:absolute;left:540px;top:520px;width:380px;height:380px;margin:-190px 0 0 -190px;border-radius:50%;
+ background:radial-gradient(circle at 40% 38%,#FFFBEA 0%,#FBEFC8 55%,#E9D7A0 100%)}
+#moon::after{content:"";position:absolute;inset:0;border-radius:50%;background:radial-gradient(circle at 62% 60%,rgba(200,180,120,.25) 0 8%,transparent 9%),radial-gradient(circle at 35% 65%,rgba(200,180,120,.2) 0 6%,transparent 7%),radial-gradient(circle at 55% 30%,rgba(200,180,120,.18) 0 5%,transparent 6%)}
+#glow{position:absolute;left:540px;top:520px;width:1000px;height:1000px;margin:-500px 0 0 -500px;border-radius:50%;background:radial-gradient(circle,rgba(255,240,190,.35),rgba(255,240,190,0) 60%)}
+#branch{position:absolute;left:-40px;top:120px;width:560px;height:520px}
+#petals b{position:absolute;width:26px;height:20px;border-radius:70% 10% 70% 10%;background:linear-gradient(135deg,#FFD6E4,#F7A8C4)}
+#water{position:absolute;left:0;right:0;bottom:0;height:520px;background:linear-gradient(to bottom,rgba(10,16,40,0),#050815 70%)}
+#refl{position:absolute;left:540px;top:1560px;width:160px;height:300px;margin-left:-80px;background:linear-gradient(to bottom,rgba(255,240,190,.35),rgba(255,240,190,0));filter:blur(6px)}
+.t{position:absolute;left:70px;right:70px;text-align:center;opacity:0;text-shadow:0 4px 30px rgba(0,0,0,.6)}
+.h1{font-weight:900;font-size:72px;line-height:1.12}
+.sm{font-weight:500;font-size:42px;color:#D9DDF5}
+.jp{font-family:SerifJP;font-weight:900}
+.pink{color:#FFB3CC}.gold{color:#FFE7A6}
+.read{font-family:Play;font-size:62px;color:#FFD9E6}
+.stamp{display:inline-block;border:6px solid #FF5C7A;color:#FF5C7A;border-radius:14px;padding:8px 26px;font-weight:900;font-size:48px;transform:rotate(-8deg)}
+#hand{position:absolute;bottom:90px;left:0;right:0;text-align:center;font-weight:700;font-size:32px;color:#C8CCE8;opacity:.8}
+#tag{position:absolute;top:150px;left:0;right:0;text-align:center;font-weight:700;font-size:30px;letter-spacing:5px;color:#AAB2E0}
+</style></head><body>
+<div id="sky"></div><div id="stars"></div><div id="glow"></div><div id="moon"></div>
+<svg id="branch" viewBox="0 0 560 520"><path d="M-20 60 C 120 80, 220 140, 330 230 S 470 380, 540 420" stroke="#2A1A22" stroke-width="16" fill="none" stroke-linecap="round"/>
+<path d="M200 130 C 230 70, 260 40, 300 20" stroke="#2A1A22" stroke-width="8" fill="none" stroke-linecap="round"/>
+<path d="M360 260 C 400 220, 430 200, 470 190" stroke="#2A1A22" stroke-width="7" fill="none" stroke-linecap="round"/>
+<g fill="#F9B9CF" opacity=".95"><circle cx="120" cy="90" r="24"/><circle cx="160" cy="110" r="20"/><circle cx="240" cy="150" r="26"/><circle cx="300" cy="30" r="20"/><circle cx="270" cy="60" r="16"/><circle cx="330" cy="220" r="24"/><circle cx="380" cy="270" r="20"/><circle cx="460" cy="190" r="22"/><circle cx="420" cy="320" r="24"/><circle cx="500" cy="400" r="20"/><circle cx="60" cy="70" r="18"/></g>
+<g fill="#FFE1EA"><circle cx="128" cy="84" r="7"/><circle cx="246" cy="144" r="8"/><circle cx="336" cy="214" r="7"/><circle cx="426" cy="314" r="7"/><circle cx="466" cy="184" r="6"/></g></svg>
+<div id="water"></div><div id="petals"></div>
+<div id="tag">日本語の秘密 · JAPANESE SECRETS</div>
+
+<div class="t" id="a1" style="top:880px"><div class="h1">Don't say "I love you"<br>in Japanese.</div></div>
+<div class="t" id="a2" style="top:1100px"><div class="sm">Nobody actually says…</div></div>
+
+<div class="t" id="b1" style="top:840px"><div class="jp" style="font-size:190px;line-height:1">愛してる</div></div>
+<div class="t" id="b2" style="top:1060px"><div class="read">aishiteru · "I love you"</div></div>
+<div class="t" id="b3" style="top:1180px"><div class="sm">Too heavy. Like a movie line 🎬</div></div>
+<div class="t" id="b4" style="top:1290px"><span class="stamp">RARELY SAID</span></div>
+
+<div class="t" id="c0" style="top:820px"><div class="sm">Couples say this instead 💕</div></div>
+<div class="t" id="c1" style="top:910px"><div class="jp pink" style="font-size:170px;line-height:1">好き</div><div class="read" style="margin-top:10px">suki · "I like you"</div></div>
+<div class="t" id="c2" style="top:1210px"><div class="jp pink" style="font-size:130px;line-height:1">大好き</div><div class="read" style="margin-top:10px">daisuki · "I really like you"</div></div>
+
+<div class="t" id="d0" style="top:800px"><div class="sm">A famous legend says the writer<br><b class="gold">Natsume Sōseki</b> translated "I love you" as…</div></div>
+<div class="t" id="d1" style="top:1000px"><div class="jp gold" id="moonline" style="font-size:118px;line-height:1.1;white-space:nowrap"></div></div>
+<div class="t" id="d2" style="top:1170px"><div class="read" style="font-size:66px">"The moon is beautiful,<br>isn't it?" 🌙</div></div>
+
+<div class="t" id="e1" style="top:880px"><div class="h1">Send this to the one<br>you'd say it to <span class="gold">🌙</span></div></div>
+<div class="t" id="e2" style="top:1110px"><div class="sm">Follow for more Japanese secrets</div></div>
+<div id="hand">@raj_in_jp</div>
+<script>
+window.TOTAL=24;
+const cl=x=>Math.min(Math.max(x,0),1), ease=x=>1-Math.pow(1-cl(x),3);
+const $=id=>document.getElementById(id);
+// seeded rng
+let s=7; const r=()=>(s=(s*16807)%2147483647)/2147483647;
+const ST=[...Array(90)].map(()=>({x:r()*1080,y:r()*1400,p:r()*6,z:.5+r()*1.5}));
+ST.forEach(o=>{const e=document.createElement('i');e.style.left=o.x+'px';e.style.top=o.y+'px';e.style.transform=`scale(${o.z})`;$('stars').appendChild(e);o.e=e;});
+const PT=[...Array(34)].map(()=>({x:r()*1300-100,y0:r()*2200-300,v:60+r()*80,w:40+r()*80,ph:r()*6,rot:r()*360,sz:.6+r()*.9}));
+PT.forEach(o=>{const e=document.createElement('b');$('petals').appendChild(e);o.e=e;});
+const LINE='月が綺麗ですね';
+// scene windows [in, out]
+const W={a:[0,4.2],b:[4.2,9.6],c:[9.6,14.6],d:[14.6,20.6],e:[20.6,24.2]};
+function show(id,at,t,win,d=.5,dy=30){const e=$(id),p=ease((t-at)/d),o=ease((win[1]-t)/.4);e.style.opacity=t<at?0:Math.min(p,o);e.style.transform=`translateY(${(1-p)*dy}px)`;}
+window.render=t=>{
+  ST.forEach(o=>{o.e.style.opacity=.35+.65*Math.abs(Math.sin(t*1.3+o.p));});
+  PT.forEach(o=>{let y=((o.y0+o.v*t)%2300)-200;const x=o.x+Math.sin(t*1.1+o.ph)*o.w;o.e.style.transform=`translate(${x}px,${y}px) rotate(${o.rot+t*80}deg) scale(${o.sz})`;});
+  // moon glows brighter during the legend
+  const g=t>15&&t<21?1:0.55; const gl=0.55+0.45*cl((t-15.5)/1.5)-0.45*cl((t-20.4)/.6);
+  $('glow').style.opacity=gl; $('moon').style.transform=`scale(${1+0.06*cl((t-15)/2)-0.06*cl((t-20.5)/1)})`;
+  $('branch').style.transform=`rotate(${Math.sin(t*.8)*1.2}deg)`;
+  show('a1',0.15,t,W.a,.45,-20); show('a2',1.6,t,W.a);
+  show('b1',4.35,t,W.b,.6); show('b2',5.0,t,W.b); show('b3',6.2,t,W.b);
+  const sb=$('b4'); const ps=cl((t-7.4)/.18); sb.style.opacity=t<7.4?0:Math.min(1,ease((W.b[1]-t)/.4)); sb.style.transform=`scale(${2-ps})`;
+  show('c0',9.75,t,W.c); show('c1',10.4,t,W.c,.55); show('c2',12.0,t,W.c,.55);
+  show('d0',14.75,t,W.d); show('d1',16.4,t,W.d,.3,0); show('d2',18.6,t,W.d,.6);
+  const n=Math.max(0,Math.min(LINE.length,Math.floor((t-16.4)/0.26)+1)); $('moonline').textContent=t<16.4?'':LINE.slice(0,n);
+  show('e1',20.75,t,[0,99],.5); show('e2',21.7,t,[0,99]);
+};
+</script></body></html>
