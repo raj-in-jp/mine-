@@ -1,0 +1,87 @@
+<!doctype html><html><head><meta charset="utf-8"><style>
+@font-face{font-family:Bebas;src:url(file:///root/.local/share/fonts/reel-fonts/BebasNeue-400.ttf)}
+@font-face{font-family:Satoshi;src:url(file:///root/.local/share/fonts/reel-fonts/Satoshi-Black.otf);font-weight:900}
+@font-face{font-family:Satoshi;src:url(file:///root/.local/share/fonts/reel-fonts/Satoshi-Bold.otf);font-weight:700}
+@font-face{font-family:SansJP;src:url(file:///root/.local/share/fonts/reel-fonts/NotoSansJP-900.ttf);font-weight:900}
+@font-face{font-family:SerifJP;src:url(file:///root/.local/share/fonts/reel-fonts/NotoSerifJP-900.ttf);font-weight:900}
+@font-face{font-family:Play;src:url(file:///root/.local/share/fonts/reel-fonts/PlayfairDisplay-Italic.ttf)}
+@font-face{font-family:Archivo;src:url(file:///tmp/claude-0/-home-user-mine-/fb3f0fdd-1672-5c4e-9452-7e15893874e1/scratchpad/carousel/fonts/ArchivoBlack.ttf)}
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{width:1080px;height:1920px;overflow:hidden;font-family:Satoshi,'Noto Color Emoji',sans-serif}
+.st{position:absolute;inset:0;display:none;overflow:hidden}
+.lbl{position:absolute;top:120px;left:0;right:0;text-align:center;font-family:Satoshi;font-weight:900;font-size:40px;letter-spacing:4px;z-index:20}
+.lbl span{padding:10px 26px;border-radius:999px}
+.x{position:absolute;left:0;right:0;text-align:center;opacity:0}
+/* A retro */
+#A{background:#F1E3C2;color:#2B2118}
+#A .dots{position:absolute;inset:0;background-image:radial-gradient(rgba(60,40,20,.18) 2px,transparent 2.5px);background-size:16px 16px}
+#A .tile{display:inline-flex;align-items:center;justify-content:center;width:420px;height:420px;border:9px solid #2B2118;background:#FFF6E0;box-shadow:16px 16px 0 #2B2118;font-family:SansJP;font-weight:900;font-size:300px}
+/* B aesthetic */
+#B{background:radial-gradient(ellipse at 50% 30%,#22305E,#0B1028 70%);color:#fff}
+#B .moon{position:absolute;left:390px;top:300px;width:300px;height:300px;border-radius:50%;background:radial-gradient(circle at 40% 38%,#FFFBEA,#E9D7A0);box-shadow:0 0 160px 40px rgba(255,240,190,.3)}
+#B b.p{position:absolute;width:24px;height:18px;border-radius:70% 10% 70% 10%;background:#F7B8CE}
+/* C manga */
+#C{background:#fff;color:#111}
+#C .tone{position:absolute;inset:0;background-image:radial-gradient(#000 1.6px,transparent 2px);background-size:12px 12px;opacity:.18}
+#C .speed{position:absolute;inset:-400px;background:repeating-conic-gradient(from 0deg at 50% 50%,#000 0 1.2deg,transparent 1.2deg 7deg);opacity:.0}
+#C .panel{position:absolute;left:60px;right:60px;top:300px;bottom:330px;border:10px solid #111;background:transparent}
+#C .bub{display:inline-block;background:#fff;border:8px solid #111;border-radius:50%;padding:60px 90px;font-family:SansJP;font-weight:900;font-size:240px;line-height:1;position:relative}
+/* D kinetic */
+#D{background:#0A0A0A;color:#fff}
+#D .w{font-family:Bebas;font-size:230px;line-height:.9;letter-spacing:2px}
+#D .hl{background:#FFE600;color:#0A0A0A;padding:0 20px}
+</style></head><body>
+
+<div class="st" id="A"><div class="dots"></div>
+ <div class="lbl"><span style="background:#D9572B;color:#fff">A · RETRO PRINT</span></div>
+ <div class="x" id="a1" style="top:330px;font-family:Archivo;font-size:84px;line-height:1.05">DON'T SAY<br>THIS TO YOUR<br><span style="color:#D9572B">BOSS</span></div>
+ <div class="x" id="a2" style="top:720px"><span class="tile">俺</span></div>
+ <div class="x" id="a3" style="top:1250px;font-family:Archivo;font-size:76px">SAY <span style="font-family:SansJP;color:#1F8A4C">私</span> INSTEAD ✅</div>
+</div>
+
+<div class="st" id="B"><div class="moon"></div><div id="bp"></div>
+ <div class="lbl"><span style="background:rgba(255,255,255,.15);color:#FFE7A6">B · CINEMATIC AESTHETIC</span></div>
+ <div class="x" id="b1" style="top:700px;font-weight:900;font-size:66px;line-height:1.15;text-shadow:0 4px 30px rgba(0,0,0,.6)">Don't say this<br>to your boss…</div>
+ <div class="x" id="b2" style="top:900px;font-family:SerifJP;font-weight:900;font-size:300px;color:#FFE7A6;text-shadow:0 0 60px rgba(255,220,150,.5)">俺</div>
+ <div class="x" id="b3" style="top:1300px;font-family:Play;font-size:72px;color:#FFD9E6">say 私 instead ✨</div>
+</div>
+
+<div class="st" id="C"><div class="speed" id="cs"></div><div class="tone"></div><div class="panel"></div>
+ <div class="lbl"><span style="background:#111;color:#fff">C · MANGA PANEL</span></div>
+ <div class="x" id="c1" style="top:400px;font-weight:900;font-size:72px;line-height:1.1">Don't say this<br>to your boss!!</div>
+ <div class="x" id="c2" style="top:660px"><span class="bub">俺</span></div>
+ <div class="x" id="c4" style="top:1080px;font-family:SansJP;font-weight:900;font-size:120px;color:#E01B24">ドーン!!</div>
+ <div class="x" id="c3" style="top:1340px;font-weight:900;font-size:70px">Say <span style="font-family:SansJP">私</span> instead ✅</div>
+</div>
+
+<div class="st" id="D">
+ <div class="lbl"><span style="background:#FFE600;color:#0A0A0A">D · BOLD KINETIC</span></div>
+ <div class="x w" id="d1" style="top:420px">DON'T SAY</div>
+ <div class="x" id="d2" style="top:640px;font-family:SansJP;font-weight:900;font-size:380px;line-height:1">俺</div>
+ <div class="x w" id="d3" style="top:1090px;font-size:170px">TO YOUR <span class="hl">BOSS</span></div>
+ <div class="x w" id="d4" style="top:1300px;font-size:150px">SAY <span style="font-family:SansJP;font-size:130px;color:#38E07B">私</span> ✅</div>
+</div>
+
+<script>
+window.TOTAL=20;
+const cl=x=>Math.min(Math.max(x,0),1), ease=x=>1-Math.pow(1-cl(x),3), back=x=>{x=cl(x);const c=1.8;return 1+(c+1)*Math.pow(x-1,3)+c*Math.pow(x-1,2);};
+const $=id=>document.getElementById(id);
+let s=3; const r=()=>(s=(s*16807)%2147483647)/2147483647;
+const P=[...Array(26)].map(()=>({x:r()*1100,y0:r()*2000,v:70+r()*70,ph:r()*6}));
+P.forEach(o=>{const e=document.createElement('b');e.className='p';$('bp').appendChild(e);o.e=e;});
+function fadeUp(id,at,t,d=.45,dy=40){const e=$(id),p=ease((t-at)/d);e.style.opacity=t<at?0:p;e.style.transform=`translateY(${(1-p)*dy}px)`;}
+function pop(id,at,t,d=.35){const e=$(id);e.style.opacity=t<at?0:1;e.style.transform=`scale(${t<at?.4:.4+.6*back((t-at)/d)})`;}
+function slam(id,at,t){const e=$(id),p=cl((t-at)/.12);e.style.opacity=t<at?0:1;e.style.transform=`scale(${2.2-1.2*p})`;}
+window.render=T=>{
+  const k=Math.min(3,Math.floor(T/5)), t=T-k*5;
+  ['A','B','C','D'].forEach((id,i)=>$(id).style.display=i===k?'block':'none');
+  if(k===0){fadeUp('a1',.1,t,.4,-30);pop('a2',1.3,t,.4);fadeUp('a3',2.9,t);}
+  if(k===1){P.forEach(o=>{const y=((o.y0+o.v*T)%2100)-100;o.e.style.transform=`translate(${o.x+Math.sin(T+o.ph)*50}px,${y}px) rotate(${T*70+o.ph*50}deg)`;});
+    fadeUp('b1',.2,t,.8,20);const e=$('b2'),p=ease((t-1.5)/1.0);e.style.opacity=t<1.5?0:p;e.style.filter=`blur(${(1-p)*14}px)`;fadeUp('b3',3.0,t,.8,20);}
+  if(k===2){fadeUp('c1',.1,t,.25,-30);pop('c2',1.2,t,.25);const sp=$('cs');sp.style.opacity=t>1.2&&t<2.6?.35:0;sp.style.transform=`rotate(${t*8}deg)`;
+    slam('c4',1.35,t);if(t>2.4)$('c4').style.opacity=Math.max(0,1-(t-2.4)/.3);
+    const sh=(t>1.2&&t<1.6)?Math.sin(t*90)*14:0;$('C').style.transform=`translate(${sh}px,${-sh/2}px)`;fadeUp('c3',2.9,t,.3);}
+  if(k===3){slam('d1',.15,t);slam('d2',.75,t);slam('d3',1.5,t);slam('d4',3.0,t);
+    const sh=[.15,.75,1.5,3.0].some(a=>t>a&&t<a+.12)?Math.sin(t*120)*10:0;$('D').style.transform=`translate(${sh}px,0)`;}
+};
+</script></body></html>
