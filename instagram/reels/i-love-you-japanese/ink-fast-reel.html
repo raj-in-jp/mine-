@@ -1,0 +1,121 @@
+<!doctype html><html><head><meta charset="utf-8"><style>
+@font-face{font-family:Brush;src:url(fonts/YujiSyuku.ttf)}
+@font-face{font-family:Mai;src:url(file:///root/.local/share/fonts/reel-fonts/YujiMai-400.ttf)}
+@font-face{font-family:Sat;src:url(file:///root/.local/share/fonts/reel-fonts/Satoshi-Black.otf);font-weight:900}
+@font-face{font-family:Sat;src:url(file:///root/.local/share/fonts/reel-fonts/Satoshi-Bold.otf);font-weight:700}
+@font-face{font-family:Corm;src:url(file:///root/.local/share/fonts/reel-fonts/CormorantGaramond-Italic.ttf)}
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{width:1080px;height:1920px;overflow:hidden;background:#EFE8DA;font-family:Sat,'Noto Color Emoji',sans-serif;color:#1A1714}
+#bg{position:absolute;inset:-40px;width:1160px;height:2000px;background:url(bg.jpg) center/cover}
+.layer{position:absolute;left:0;top:0;width:1080px;height:1920px}
+#glow{position:absolute;left:630px;top:600px;width:520px;height:520px;margin:-260px 0 0 -260px;border-radius:50%;background:radial-gradient(circle,rgba(232,196,110,.6),rgba(232,196,110,0) 70%);opacity:0}
+#pet b{position:absolute;width:18px;height:13px;border-radius:70% 10% 70% 10%;background:rgba(200,80,100,.7)}
+.x{position:absolute;left:40px;right:40px;text-align:center;opacity:0}
+.big{font-weight:900;font-size:90px;line-height:1;letter-spacing:1px}
+.h1{font-weight:900;font-size:70px;line-height:1.14}
+.sm{font-weight:700;font-size:46px;color:#3A322B}
+.k{font-family:Brush;line-height:1}
+.rd{font-family:Corm;font-size:60px;color:#7A2E2A}
+.seal{display:inline-block;background:#B3241D;color:#F6EBD8;font-weight:900;font-size:50px;padding:14px 34px;border-radius:12px;transform:rotate(-3deg);box-shadow:0 6px 0 rgba(90,20,15,.35)}
+#box{position:absolute;left:20px;top:430px;width:1040px;height:800px;opacity:0}
+#mk{position:absolute;inset:0;-webkit-mask-image:url(mask.png);mask-image:url(mask.png);-webkit-mask-size:100% 100%;mask-size:100% 100%;overflow:hidden}
+#clip{position:absolute;left:40px;top:40px;width:960px;height:720px;transform-origin:50% 50%}
+#border{position:absolute;inset:0;width:1040px;height:800px}
+#slash{position:absolute;left:-30px;right:-30px;top:50%;height:22px;margin-top:-11px;background:#B3241D;border-radius:40% 60% 50% 50%/60% 40% 60% 40%;transform-origin:left center;transform:scaleX(0) rotate(-4deg)}
+#hanko{position:absolute;right:80px;bottom:150px;width:96px;height:130px;background:#B3241D;color:#F3E7D3;border-radius:10px;font-family:Brush;font-size:48px;line-height:1.05;display:flex;align-items:center;justify-content:center;text-align:center;transform:rotate(-4deg);opacity:.9}
+#hand{position:absolute;bottom:70px;left:0;right:0;text-align:center;font-weight:700;font-size:32px;color:#6A5D4A}
+#tag{position:absolute;top:150px;left:0;right:0;text-align:center;font-weight:700;font-size:30px;letter-spacing:5px;color:#6A5D4A;opacity:0}
+</style></head><body>
+<div id="bg"></div>
+<div id="glow"></div>
+<img class="layer" id="enso" src="ink/enso/0001.png">
+<img class="layer" id="branch" src="ink/branch/0001.png" style="left:-70px;top:-40px">
+<div id="pet"></div>
+<div id="tag">日本語の秘密 · JAPANESE SECRETS</div>
+<div id="box"><div id="mk"><img id="clip" src="clips/0000.jpg"></div><img id="border" src="border.png"></div>
+
+<!-- HOOK -->
+<div class="x big" id="h1" style="top:210px">NOBODY IN JAPAN</div>
+<div class="x big" id="h2" style="top:315px">SAYS <span style="color:#B3241D">"I LOVE YOU"</span></div>
+<div class="x" id="h3" style="top:1290px"><span class="seal">not even in dramas 👀</span></div>
+<!-- AISHITERU -->
+<div class="x sm" id="a1" style="top:800px">This one? Almost never.</div>
+<div class="x" id="a2" style="top:900px;margin-top:20px"><div style="position:relative;display:inline-block"><span class="k" style="font-size:220px">愛してる</span><div id="slash"></div></div></div>
+<div class="x" id="a3" style="top:1180px"><span class="rd">aishiteru · way too heavy 🎬</span></div>
+<div class="x" id="a4" style="top:1290px"><span class="seal" style="font-family:Brush;font-weight:400">めったに言わない · rarely said</span></div>
+<!-- SUKI -->
+<div class="x sm" id="s1" style="top:320px;font-weight:900;font-size:58px;color:#1A1714">Real confession 👇</div>
+<div class="x" id="s2" style="top:1270px"><span class="k" style="font-size:130px;color:#8E1F2A">好きです</span><br><span class="rd" style="font-size:52px">suki desu · "I like you"</span></div>
+<!-- DAISUKI -->
+<div class="x sm" id="d1" style="top:320px;font-weight:900;font-size:58px;color:#1A1714">Even stronger 💥</div>
+<div class="x" id="d2" style="top:1270px"><span class="k" style="font-size:130px;color:#8E1F2A">大好きです！</span><br><span class="rd" style="font-size:52px">daisuki desu · "I really like you"</span></div>
+<!-- LEGEND -->
+<div class="x sm" id="l1" style="top:960px;font-size:44px;line-height:1.3">A famous legend says <b style="color:#B3241D">Natsume Sōseki</b><br>translated "I love you" as…</div>
+<div class="x" id="l2" style="top:1110px"><span id="ml" style="font-family:Mai;font-size:124px;white-space:nowrap"></span></div>
+<div class="x" id="l3" style="top:1290px"><span class="rd" style="font-size:66px">"The moon is beautiful, isn't it?" 🌙</span></div>
+<!-- ANIME -->
+<div class="x sm" id="n1" style="top:320px;font-weight:900;font-size:58px;color:#1A1714">Anime fans know this line 🌙</div>
+<div class="x" id="n2" style="top:1270px"><span style="font-family:Mai;font-size:100px;color:#1A1714">月が綺麗ですね</span><br><span style="font-weight:700;font-size:30px;color:#6A5D4A">Demon Slayer · S1 Ep 18</span></div>
+<!-- CTA -->
+<div class="x h1" id="c1" style="top:1000px">Send this to the one<br>you'd say it to 🌙</div>
+<div class="x" id="c2" style="top:1240px"><span class="seal" style="transform:none">Follow for more 🇯🇵</span></div>
+
+<div id="hanko">愛<br>月</div>
+<div id="hand">@raj_in_jp</div>
+<script>
+window.TOTAL=29.4;
+const cl=x=>Math.min(Math.max(x,0),1), ease=x=>1-Math.pow(1-cl(x),3), back=x=>{x=cl(x);const c=1.8;return 1+(c+1)*Math.pow(x-1,3)+c*Math.pow(x-1,2);};
+const $=id=>document.getElementById(id);
+let s=11; const r=()=>(s=(s*16807)%2147483647)/2147483647;
+const PT=[...Array(18)].map(()=>({x:r()*1100,y0:r()*2100,v:55+r()*60,w:30+r()*60,ph:r()*6}));
+PT.forEach(o=>{const e=document.createElement('b');$('pet').appendChild(e);o.e=e;});
+const WIN={h:[0,3.6],a:[3.6,7.8],s:[7.8,10.4],d:[10.4,13.0],l:[13.0,21.8],n:[21.8,25.8],c:[25.8,99]};
+const CLIPW=[[0,3.6,0],[7.8,10.4,234],[10.4,13.0,312],[21.8,25.8,654]];
+const SHOTS=[0,0.9,1.8,2.7];
+const pend=[];function setSrc(id,u){const e=$(id);if(e.getAttribute('src')!==u){e.setAttribute('src',u);pend.push(e.decode().catch(()=>{}));}}
+const fr=(t,n)=>String(Math.min(n,Math.max(1,Math.floor(t*30)+1))).padStart(4,'0');
+const vis=(w,t)=>t>=w[0]&&t<w[1];
+function hide(id){$(id).style.opacity=0;}
+function slam(id,at,t,w,d=.14){const e=$(id);if(t<at||!vis(w,t))return hide(id);const p=cl((t-at)/d);e.style.opacity=1;e.style.transform=`scale(${1.8-0.8*ease(p)})`;}
+function pop(id,at,t,w,d=.3){const e=$(id);if(t<at||!vis(w,t))return hide(id);e.style.opacity=1;e.style.transform=`scale(${.5+.5*back((t-at)/d)})`;}
+function ink(id,at,t,w,d=.5){const e=$(id);if(t<at||!vis(w,t))return hide(id);const p=ease((t-at)/d);e.style.opacity=1;e.style.clipPath=p>=1?'none':`inset(0 ${(1-p)*100}% 0 0)`;e.style.filter=`blur(${(1-p)*5}px)`;}
+function up(id,at,t,w,d=.35){const e=$(id);if(t<at||!vis(w,t))return hide(id);const p=ease((t-at)/d);e.style.opacity=p;e.style.transform=`translateY(${(1-p)*30}px)`;}
+function renderSync(t){
+  $('bg').style.transform=`translate(${Math.sin(t*.12)*12}px,${Math.cos(t*.1)*8}px)`;
+  // ink sections: enso + branch draw in at each section start
+  const inkSec=[WIN.a,WIN.l,WIN.c].find(w=>vis(w,t));
+  if(inkSec){const lt=t-inkSec[0];$('enso').style.opacity=1;$('branch').style.opacity=1;$('tag').style.opacity=1;
+    setSrc('enso',`ink/enso/${fr(lt-0.05,49)}.png`);setSrc('branch',`ink/branch/${fr(lt-0.2,37)}.png`);}
+  else{$('enso').style.opacity=0;$('branch').style.opacity=0;$('tag').style.opacity=0;}
+  $('glow').style.opacity=cl((t-17.6)/1.2)*(vis(WIN.l,t)?1:0);
+  PT.forEach(o=>{const y=((o.y0+o.v*t)%2200)-150;o.e.style.transform=`translate(${o.x+Math.sin(t+o.ph)*o.w}px,${y}px) rotate(${t*60+o.ph*40}deg)`;});
+  // clip box
+  const cw=CLIPW.find(c=>t>=c[0]&&t<c[1]);
+  if(cw){const box=$('box');box.style.opacity=1;const lt=t-cw[0];
+    const p=ease(lt/.28);box.style.clipPath=cw[0]===0?'none':`inset(0 ${(1-p)*100}% 0 0)`;
+    setSrc('clip',`clips/${String(cw[2]+Math.min(Math.floor(lt*30),(cw[1]-cw[0])*30-1)).padStart(4,'0')}.jpg`);
+    let z=1+0.04*lt/(cw[1]-cw[0]);
+    if(cw[0]===0){const sh=SHOTS.filter(x=>t>=x).pop();z=1+0.10*(1-ease((t-sh)/.25));}
+    $('clip').style.transform=`scale(${z})`;}
+  else $('box').style.opacity=0;
+  // hook
+  slam('h1',0.0,t,WIN.h); slam('h2',0.84,t,WIN.h); pop('h3',2.35,t,WIN.h);
+  // aishiteru
+  up('a1',3.7,t,WIN.a); ink('a2',4.35,t,WIN.a,.45);
+  $('slash').style.transform=`scaleX(${ease((t-5.5)/.22)}) rotate(-4deg)`;
+  up('a3',6.4,t,WIN.a); slam('a4',5.6,t,WIN.a,.16);
+  if(vis(WIN.a,t)&&t>=5.6)$('a4').style.transform+=' rotate(-3deg)';
+  // clips
+  up('s1',7.85,t,WIN.s); ink('s2',8.2,t,WIN.s,.45);
+  up('d1',10.45,t,WIN.d); ink('d2',10.8,t,WIN.d,.45);
+  // legend
+  up('l1',13.1,t,WIN.l,.5); up('l2',18.3,t,WIN.l,.1); ink('l3',19.85,t,WIN.l,.6);
+  const n=Math.max(0,Math.min(7,Math.floor((t-18.3)/0.19)+1)); $('ml').textContent=t<18.3?'':'月が綺麗ですね'.slice(0,n);
+  // anime
+  up('n1',21.85,t,WIN.n); ink('n2',22.2,t,WIN.n,.5);
+  // cta
+  slam('c1',25.9,t,WIN.c,.18); pop('c2',27.0,t,WIN.c);
+  if(t>27.4)$('c2').style.transform=`scale(${1+.04*Math.sin((t-27.4)*6)})`;
+}
+window.render=async t=>{pend.length=0;renderSync(t);await Promise.all(pend);};
+</script></body></html>
