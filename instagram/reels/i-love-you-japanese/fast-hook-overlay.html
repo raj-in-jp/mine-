@@ -1,0 +1,71 @@
+<!doctype html><html><head><meta charset="utf-8"><style>
+@font-face{font-family:Sat;src:url(file:///root/.local/share/fonts/reel-fonts/Satoshi-Black.otf);font-weight:900}
+@font-face{font-family:Sat;src:url(file:///root/.local/share/fonts/reel-fonts/Satoshi-Bold.otf);font-weight:700}
+@font-face{font-family:Zen;src:url(file:///root/.local/share/fonts/reel-fonts/ZenOldMincho-700.ttf)}
+@font-face{font-family:Mai;src:url(file:///root/.local/share/fonts/reel-fonts/YujiMai-400.ttf)}
+@font-face{font-family:Corm;src:url(file:///root/.local/share/fonts/reel-fonts/CormorantGaramond-Italic.ttf)}
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{width:1080px;height:1920px;background:transparent;overflow:hidden;font-family:Sat,'Noto Color Emoji',sans-serif;color:#fff}
+#root{position:absolute;inset:0}
+.x{position:absolute;left:0;right:0;text-align:center;opacity:0;text-shadow:0 6px 28px rgba(0,0,0,.75)}
+.big{font-weight:900;font-size:92px;line-height:1;letter-spacing:1px}
+.pill{display:inline-block;background:#E8263B;color:#fff;font-weight:900;font-size:52px;padding:14px 34px;border-radius:999px;text-shadow:none;box-shadow:0 10px 30px rgba(0,0,0,.4)}
+.blk{display:inline-block;background:rgba(10,8,20,.78);padding:14px 30px;border-radius:22px}
+.kz{font-family:Zen;line-height:1}
+.rd{font-family:Corm;font-size:62px;color:#FFE1EA}
+.slash{position:absolute;left:150px;right:150px;top:50%;height:16px;margin-top:-8px;background:#E8263B;transform-origin:left center;border-radius:8px;box-shadow:0 0 18px rgba(232,38,59,.7)}
+#flash{position:absolute;inset:0;background:#fff;opacity:0}
+</style></head><body><div id="root">
+<!-- HOOK 0-2.8 -->
+<div class="x big" id="h1" style="top:300px">NOBODY IN JAPAN</div>
+<div class="x big" id="h2" style="top:410px">SAYS <span style="color:#FFD34D">"I LOVE YOU"</span></div>
+<div class="x" id="h3" style="top:1440px"><span class="pill">not even in dramas 👀</span></div>
+<!-- 2.8-5.0 aishiteru crossed -->
+<div class="x" id="a1" style="top:330px;font-weight:900;font-size:56px">This one? Almost never.</div>
+<div class="x" id="a2" style="top:760px"><div style="position:relative;display:inline-block"><span class="kz" style="font-size:230px">愛してる</span><div class="slash" id="sl" style="left:-20px;right:-20px"></div></div></div>
+<div class="x" id="a3" style="top:1060px"><span class="rd">aishiteru · too heavy 🎬</span></div>
+<!-- 5.0-7.6 suki clip -->
+<div class="x" id="s1" style="top:300px;font-weight:900;font-size:60px">Real confession 👇</div>
+<div class="x" id="s2" style="top:1400px"><span class="blk"><span class="kz" style="font-size:120px;color:#FFB3C7">好きです</span><br><span class="rd" style="font-size:52px">suki desu · "I like you"</span></span></div>
+<!-- 7.6-10.2 daisuki clip -->
+<div class="x" id="d1" style="top:300px;font-weight:900;font-size:60px">Even stronger 💥</div>
+<div class="x" id="d2" style="top:1400px"><span class="blk"><span class="kz" style="font-size:120px;color:#FFB3C7">大好きです！</span><br><span class="rd" style="font-size:52px">daisuki desu · "I really like you"</span></span></div>
+<!-- 10.2-16.5 legend -->
+<div class="x" id="l1" style="top:820px;font-weight:700;font-size:44px;line-height:1.3">A famous legend says <b style="color:#FFE7A6">Natsume Sōseki</b><br>translated "I love you" as…</div>
+<div class="x" id="l2" style="top:1010px"><span id="ml" style="font-family:Mai;font-size:124px;color:#FFE7A6;white-space:nowrap"></span></div>
+<div class="x" id="l3" style="top:1190px"><span class="rd" style="font-size:66px">"The moon is beautiful, isn't it?" 🌙</span></div>
+<!-- 16.5-20.5 anime -->
+<div class="x" id="n1" style="top:300px;font-weight:900;font-size:60px">Anime fans know this line 🌙</div>
+<div class="x" id="n2" style="top:1400px"><span class="blk"><span style="font-family:Mai;font-size:96px;color:#FFE7A6">月が綺麗ですね</span><br><span style="font-weight:700;font-size:30px;color:#ddd">Demon Slayer · S1 Ep 18</span></span></div>
+<!-- 20.5- CTA -->
+<div class="x" id="c1" style="top:860px;font-weight:900;font-size:72px;line-height:1.12">Send this to the one<br>you'd say it to 🌙</div>
+<div class="x" id="c2" style="top:1110px"><span class="pill" style="background:#fff;color:#111">Follow for more 🇯🇵</span></div>
+<div id="flash"></div>
+</div>
+<script>
+window.TOTAL=23.75;
+const cl=x=>Math.min(Math.max(x,0),1), ease=x=>1-Math.pow(1-cl(x),3), back=x=>{x=cl(x);const c=2;return 1+(c+1)*Math.pow(x-1,3)+c*Math.pow(x-1,2);};
+const $=id=>document.getElementById(id);
+const WIN={h:[0,2.8],a:[2.8,5.0],s:[5.0,7.6],d:[7.6,10.2],l:[10.2,16.5],n:[16.5,20.5],c:[20.5,99]};
+function vis(id,win,t){return t>=win[0]&&t<win[1];}
+function slam(id,at,t,win,d=.14){const e=$(id);if(t<at||!vis(id,win,t)){e.style.opacity=0;return;}const p=cl((t-at)/d);e.style.opacity=1;e.style.transform=`scale(${2.0-1.0*ease(p)})`;}
+function pop(id,at,t,win,d=.3){const e=$(id);if(t<at||!vis(id,win,t)){e.style.opacity=0;return;}e.style.opacity=1;e.style.transform=`scale(${.5+.5*back((t-at)/d)})`;}
+function up(id,at,t,win,d=.3){const e=$(id);if(t<at||!vis(id,win,t)){e.style.opacity=0;return;}const p=ease((t-at)/d);e.style.opacity=p;e.style.transform=`translateY(${(1-p)*40}px)`;}
+const LINE='月が綺麗ですね';
+window.render=t=>{
+  let shake=0; const hits=[0.0,0.45,1.25,3.6,5.05,7.65,16.55];
+  hits.forEach(h=>{if(t>h&&t<h+.16)shake=Math.sin((t-h)*120)*14*(1-(t-h)/.16);});
+  $('root').style.transform=`translate(${shake}px,${-shake/2}px)`;
+  // white flash on cuts
+  const cuts=[2.8,5.0,7.6,10.2,16.5,20.5]; let f=0; cuts.forEach(c=>{if(t>=c&&t<c+.12)f=.55*(1-(t-c)/.12);}); $('flash').style.opacity=f;
+  slam('h1',0.0,t,WIN.h); slam('h2',0.45,t,WIN.h); pop('h3',1.25,t,WIN.h);
+  up('a1',2.85,t,WIN.a); slam('a2',3.1,t,WIN.a,.16); $('sl').style.transform=`scaleX(${ease((t-3.6)/.25)})`; up('a3',3.9,t,WIN.a);
+  pop('s1',5.05,t,WIN.s); pop('s2',5.4,t,WIN.s,.35);
+  pop('d1',7.65,t,WIN.d); pop('d2',8.0,t,WIN.d,.35);
+  up('l1',10.3,t,WIN.l,.4); up('l2',11.6,t,WIN.l,.1); up('l3',14.2,t,WIN.l,.5);
+  const n=Math.max(0,Math.min(LINE.length,Math.floor((t-11.6)/0.22)+1)); $('ml').textContent=t<11.6?'':LINE.slice(0,n);
+  pop('n1',16.55,t,WIN.n); pop('n2',16.9,t,WIN.n,.35);
+  slam('c1',20.6,t,WIN.c,.18); pop('c2',21.4,t,WIN.c);
+  if(t>21.8){$('c2').style.transform=`scale(${1+.04*Math.sin((t-21.8)*6)})`;}
+};
+</script></body></html>
