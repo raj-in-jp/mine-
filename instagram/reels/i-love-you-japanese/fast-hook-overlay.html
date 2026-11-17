@@ -43,29 +43,29 @@ html,body{width:1080px;height:1920px;background:transparent;overflow:hidden;font
 <div id="flash"></div>
 </div>
 <script>
-window.TOTAL=23.75;
+window.TOTAL=29.4;
 const cl=x=>Math.min(Math.max(x,0),1), ease=x=>1-Math.pow(1-cl(x),3), back=x=>{x=cl(x);const c=2;return 1+(c+1)*Math.pow(x-1,3)+c*Math.pow(x-1,2);};
 const $=id=>document.getElementById(id);
-const WIN={h:[0,2.8],a:[2.8,5.0],s:[5.0,7.6],d:[7.6,10.2],l:[10.2,16.5],n:[16.5,20.5],c:[20.5,99]};
+const WIN={h:[0,3.6],a:[3.6,7.8],s:[7.8,10.4],d:[10.4,13.0],l:[13.0,21.8],n:[21.8,25.8],c:[25.8,99]};
 function vis(id,win,t){return t>=win[0]&&t<win[1];}
 function slam(id,at,t,win,d=.14){const e=$(id);if(t<at||!vis(id,win,t)){e.style.opacity=0;return;}const p=cl((t-at)/d);e.style.opacity=1;e.style.transform=`scale(${2.0-1.0*ease(p)})`;}
 function pop(id,at,t,win,d=.3){const e=$(id);if(t<at||!vis(id,win,t)){e.style.opacity=0;return;}e.style.opacity=1;e.style.transform=`scale(${.5+.5*back((t-at)/d)})`;}
 function up(id,at,t,win,d=.3){const e=$(id);if(t<at||!vis(id,win,t)){e.style.opacity=0;return;}const p=ease((t-at)/d);e.style.opacity=p;e.style.transform=`translateY(${(1-p)*40}px)`;}
 const LINE='月が綺麗ですね';
 window.render=t=>{
-  let shake=0; const hits=[0.0,0.45,1.25,3.6,5.05,7.65,16.55];
+  let shake=0; const hits=[0.0,0.84,2.35,4.35,5.5,7.85,10.45,21.85];
   hits.forEach(h=>{if(t>h&&t<h+.16)shake=Math.sin((t-h)*120)*14*(1-(t-h)/.16);});
   $('root').style.transform=`translate(${shake}px,${-shake/2}px)`;
   // white flash on cuts
-  const cuts=[2.8,5.0,7.6,10.2,16.5,20.5]; let f=0; cuts.forEach(c=>{if(t>=c&&t<c+.12)f=.55*(1-(t-c)/.12);}); $('flash').style.opacity=f;
-  slam('h1',0.0,t,WIN.h); slam('h2',0.45,t,WIN.h); pop('h3',1.25,t,WIN.h);
-  up('a1',2.85,t,WIN.a); slam('a2',3.1,t,WIN.a,.16); $('sl').style.transform=`scaleX(${ease((t-3.6)/.25)})`; up('a3',3.9,t,WIN.a);
-  pop('s1',5.05,t,WIN.s); pop('s2',5.4,t,WIN.s,.35);
-  pop('d1',7.65,t,WIN.d); pop('d2',8.0,t,WIN.d,.35);
-  up('l1',10.3,t,WIN.l,.4); up('l2',11.6,t,WIN.l,.1); up('l3',14.2,t,WIN.l,.5);
-  const n=Math.max(0,Math.min(LINE.length,Math.floor((t-11.6)/0.22)+1)); $('ml').textContent=t<11.6?'':LINE.slice(0,n);
-  pop('n1',16.55,t,WIN.n); pop('n2',16.9,t,WIN.n,.35);
-  slam('c1',20.6,t,WIN.c,.18); pop('c2',21.4,t,WIN.c);
-  if(t>21.8){$('c2').style.transform=`scale(${1+.04*Math.sin((t-21.8)*6)})`;}
+  const cuts=[3.6,7.8,10.4,13.0,21.8,25.8]; let f=0; cuts.forEach(c=>{if(t>=c&&t<c+.12)f=.55*(1-(t-c)/.12);}); $('flash').style.opacity=f;
+  slam('h1',0.0,t,WIN.h); slam('h2',0.84,t,WIN.h); pop('h3',2.35,t,WIN.h);
+  up('a1',3.7,t,WIN.a); slam('a2',4.35,t,WIN.a,.16); $('sl').style.transform=`scaleX(${ease((t-5.5)/.25)})`; up('a3',6.4,t,WIN.a);
+  pop('s1',7.85,t,WIN.s); pop('s2',8.2,t,WIN.s,.35);
+  pop('d1',10.45,t,WIN.d); pop('d2',10.8,t,WIN.d,.35);
+  up('l1',13.1,t,WIN.l,.4); up('l2',18.3,t,WIN.l,.1); up('l3',19.85,t,WIN.l,.5);
+  const n=Math.max(0,Math.min(LINE.length,Math.floor((t-18.3)/0.19)+1)); $('ml').textContent=t<18.3?'':LINE.slice(0,n);
+  pop('n1',21.85,t,WIN.n); pop('n2',22.2,t,WIN.n,.35);
+  slam('c1',25.9,t,WIN.c,.18); pop('c2',27.0,t,WIN.c);
+  if(t>27.4){$('c2').style.transform=`scale(${1+.04*Math.sin((t-27.4)*6)})`;}
 };
 </script></body></html>
