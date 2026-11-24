@@ -44,6 +44,13 @@ function boyHead(svg, x, y, s = 1, phones = true) {
 function iconBubble(p, sym, col, size = 120) {
   return div(p, `left:0;top:0;width:${size}px;height:${size * .8}px;background:${col};border:5px solid ${K.ink};border-radius:${size * .4}px;display:flex;align-items:center;justify-content:center;font:700 ${size * .42}px Fredoka;color:${K.cream};opacity:0`, sym + `<div style="position:absolute;left:24%;bottom:-18px;width:26px;height:26px;background:${col};border-right:5px solid ${K.ink};border-bottom:5px solid ${K.ink};transform:rotate(45deg)"></div>`);
 }
+function photo(p, src, W, H, pos = '50% 50%') {
+  const el = div(p, `left:0;top:0;width:${W}px;height:${H}px;padding:22px 22px 70px;background:#FBF7EF;border-radius:6px;box-shadow:0 24px 50px rgba(0,0,0,.35);opacity:0;z-index:2`);
+  const box = div(el, `left:22px;top:22px;width:${W}px;height:${H}px;overflow:hidden;background:#222`);
+  const img = h('img', { src, style: `position:absolute;left:0;top:0;width:100%;height:100%;object-fit:cover;object-position:${pos};transform-origin:50% 40%` }, box);
+  [[-30, -10, -8], [W - 60, -14, 10]].forEach(([x, y, r]) => div(el, `left:${x + 22}px;top:${y}px;width:110px;height:40px;background:rgba(233,180,76,.75);transform:rotate(${r}deg)`));
+  return { el, img };
+}
 const ALASKA = 'M120,160 L300,95 L520,62 L700,72 L700,420 L760,468 L835,550 L862,628 L808,604 L740,530 L655,476 L588,452 L520,470 L440,505 L360,548 L262,602 L160,648 L70,678 L190,598 L245,545 L196,505 L118,478 L80,402 L132,334 L88,262Z';
 
 // ======================= EYAK =======================
@@ -87,8 +94,14 @@ function buildEyak(cfg) {
   ticks.push(t => { const off = E.inOut(clamp((t - tOut) / .5)); const fl = t > tOut && t < tOut + .4 ? (Math.sin(t * 80) > 0 ? 1 : .3) : 1; A1.win.setAttribute('fill', mix('#FFD36B', '#2B3A44', off)); A1.glow.setAttribute('opacity', (1 - off) * fl);
     const g = E.inOut(clamp((t - w(1, 3)) / 1.6)); s1.style.filter = `grayscale(${g * .85}) brightness(${1 - g * .25})`; });
   cue(tOut, 'thud');
+  const pRed = photo(s1, 'img/msj_red.jpg', 640, 600, '0% 60%');
+  T(0, .8, (k, r) => { pRed.el.style.opacity = 1; at(pRed.el, 540, 820 - 900 * (1 - bounceOut(r)), 1, -14 + 10 * E.out(r)); }, 'lin'); cue(.45, 'thud');
+  ticks.push(t => { pRed.img.style.transform = `scale(${1 + .12 * clamp(t / 6)})`; const g = E.inOut(clamp((t - tOut) / .8)); pRed.img.style.filter = `grayscale(${g}) contrast(${1 + .1 * g})`;
+    s1.style.transform = `scale(${1.12 - .12 * E.out(clamp(t / 4))})`; s1.style.transformOrigin = '50% 60%'; });
+  const yr = div(s1, `left:0;top:0;z-index:6;padding:6px 26px 10px;border:8px solid ${K.rust};border-radius:14px;font:900 96px Fraunces;color:${K.rust};background:rgba(251,247,239,.9);opacity:0`, '2008');
+  anim(yr, 'stamp', w(0, 1) - .08, .4, { base: 'translate(800px,1080px) translate(-50%,-50%)', rot: 8 }); cue(w(0, 1), 'stamp');
   const syms = ['♪', '♥', '☀', '★', '♫', '☁', '✿'], bc = [K.rust, K.teal, K.mustard, K.plum, K.coral, K.green, K.sky];
-  const bubs = syms.map((s, i) => { const b = iconBubble(s1, s, bc[i], 110 + rnd(i, 3) * 40); b.dataset.i = i; return b; });
+  const bubs = syms.map((s, i) => { const b = iconBubble(s1, s, bc[i], 110 + rnd(i, 3) * 40); b.style.zIndex = 4; return b; });
   ticks.push(t => bubs.forEach((b, i) => { const t0 = .1 + i * .18, r = clamp((t - t0) / 3.2); const x0 = 540 + (rnd(i, 1) - .5) * 860, y0 = 1180 - r * 560 - rnd(i, 2) * 120;
     const fall = clamp((t - (w(1, 3) + i * .07)) / 1.4);
     const col = fall > 0 ? mix(bc[i], '#8C979C', clamp(fall * 3)) : bc[i]; b.style.background = col;
@@ -101,8 +114,8 @@ function buildEyak(cfg) {
   ticks.push(t => bg2.style.transform = `translateY(${-t * 14 % 120}px)`);
   const pf = div(s2, 'left:0;top:0;width:620px;height:760px;');
   pf.innerHTML = `<svg width="620" height="760" style="overflow:visible"><rect x="10" y="10" width="600" height="740" rx="300" fill="${K.mustard}" stroke="${K.ink}" stroke-width="10"/><rect x="40" y="40" width="540" height="680" rx="270" fill="#A8DADC" stroke="${K.ink}" stroke-width="6"/></svg>`;
-  const pfs = svgBox(pf, 0, 0, 620, 760); grandma(pfs, 310, 460, 1.15);
-  pfs.innerHTML = `<defs><clipPath id="ovl"><rect x="40" y="40" width="540" height="680" rx="270"/></clipPath></defs><g clip-path="url(#ovl)">${pfs.innerHTML}</g>`;
+  const ovp = div(pf, `left:40px;top:40px;width:540px;height:680px;border-radius:270px;overflow:hidden;border:6px solid ${K.ink};box-sizing:border-box;background:#222 url(img/msj_pink.jpg) no-repeat 78% 50%/auto 114%`);
+  ticks.push(t => ovp.style.backgroundSize = `auto ${114 + 10 * clamp((t - B[2].t0) / 5)}%`);
   const plaque = div(s2, `left:0;top:0;padding:16px 40px 22px;background:${K.cream};border:6px solid ${K.ink};border-radius:20px;text-align:center;opacity:0;box-shadow:0 10px 0 rgba(35,31,27,.15)`, `<div style="font:italic 700 66px 'EB Garamond';color:${K.ink}">Marie Smith Jones</div><div style="font:500 40px 'EB Garamond';color:#7A6F64">1918 – 2008</div>`);
   const tMap = B[3].t0 - .1;
   ticks.push(t => { const a = E.back(clamp((t - (B[2].t0 - .2)) / .6)); const m = E.inOut(clamp((t - tMap) / .7)); at(pf, 540 - 300 * m, 1080 - 260 * m + Math.sin(t * 1.4) * 8, (.6 + .4 * a) * (1 - .55 * m)); });
@@ -121,33 +134,31 @@ function buildEyak(cfg) {
   T(w(3, 5) + .1, .45, (k, r) => { eyLab.style.opacity = clamp(r * 3); at(eyLab, 760, 1290, Math.max(0, E.back(r))); }, 'lin');
   const stamp = div(s2, `left:0;top:0;padding:10px 26px;border:7px solid ${K.rust};border-radius:14px;font:700 52px Oswald;letter-spacing:4px;color:${K.rust};opacity:0;background:rgba(247,240,230,.85)`, 'LAST SPEAKER');
   anim(stamp, 'stamp', w(3, 2) - .05, .4, { base: 'translate(560px,620px) translate(-50%,-50%)', rot: -10 }); cue(w(3, 2) + .1, 'stamp');
-  // ---------- S3: alone at the table, candle goes out ----------
-  const s3 = sceneDiv(root, '#3B4A57', 3); iris(s3, B[4].t0 - .35, 540, 1200, .6);
-  const r3 = svgBox(s3, 0, 0, 1080, 1920);
-  r3.innerHTML = `<defs><radialGradient id="cg"><stop offset="0" stop-color="#FFC861" stop-opacity=".75"/><stop offset="1" stop-color="#FFC861" stop-opacity="0"/></radialGradient></defs>`;
-  const wall = h('rect', { width: 1080, height: 1920, fill: '#6B5A73' }, r3);
-  for (let i = 0; i < 12; i++) h('line', { x1: i * 100 + 40, y1: 0, x2: i * 100 + 40, y2: 1300, stroke: '#5E4F66', 'stroke-width': 18 }, r3);
-  h('rect', { x: 640, y: 520, width: 300, height: 360, rx: 10, fill: '#1E3A4C', ...OL }, r3); h('line', { x1: 790, y1: 520, x2: 790, y2: 880, ...OL }, r3); h('line', { x1: 640, y1: 700, x2: 940, y2: 700, ...OL }, r3);
-  h('rect', { y: 1300, width: 1080, height: 620, fill: '#8A6448' }, r3);
-  grandma(r3, 290, 1060, .95);
-  // empty chair
-  const ch = h('g', {}, r3); h('rect', { x: 720, y: 960, width: 230, height: 360, rx: 30, fill: K.teal, ...OL }, ch); h('rect', { x: 700, y: 1260, width: 270, height: 70, rx: 20, fill: shade(K.teal, .85), ...OL }, ch);
-  h('rect', { x: 60, y: 1330, width: 960, height: 50, rx: 12, fill: K.wood, ...OL }, r3); h('rect', { x: 120, y: 1380, width: 40, height: 300, fill: '#7A4A2E', ...OL, 'stroke-width': 5 }, r3); h('rect', { x: 920, y: 1380, width: 40, height: 300, fill: '#7A4A2E', ...OL, 'stroke-width': 5 }, r3);
-  [[420, 1330], [700, 1330]].forEach(([x, y]) => { h('path', { d: `M${x - 45},${y - 70} L${x + 45},${y - 70} L${x + 35},${y} L${x - 35},${y}Z`, fill: K.cream, ...OL, 'stroke-width': 5 }, r3); h('path', { d: `M${x + 45},${y - 55} q30,5 0,35`, fill: 'none', ...OL, 'stroke-width': 5 }, r3); });
-  const steam = [0, 1].map(i => h('path', { fill: 'none', stroke: '#fff', 'stroke-width': 5, opacity: .5, 'stroke-linecap': 'round' }, r3));
-  ticks.push(t => steam.forEach((s, i) => { const x = 690 + i * 22; s.setAttribute('d', `M${x},1250 q${12 * Math.sin(t * 3 + i)},-30 0,-60 q${-12 * Math.sin(t * 3 + i)},-30 0,-60`); }));
-  const cglow = h('circle', { cx: 560, cy: 1200, r: 330, fill: 'url(#cg)' }, r3);
-  h('rect', { x: 535, y: 1200, width: 50, height: 130, rx: 8, fill: K.cream, ...OL, 'stroke-width': 5 }, r3);
-  const flame = h('path', { fill: '#FFB33B', stroke: K.ink, 'stroke-width': 4 }, r3);
-  const smk = [0, 1, 2].map(i => h('circle', { r: 12 + i * 6, fill: '#BFC6CC', opacity: 0 }, r3));
-  const qb = div(s3, `left:0;top:0;padding:10px 40px 26px;background:#fff;border:6px solid ${K.ink};border-radius:50px;font:700 90px Fredoka;color:${K.plum};opacity:0`, '…' + `<div style="position:absolute;left:30%;bottom:-24px;width:30px;height:30px;background:#fff;border-right:6px solid ${K.ink};border-bottom:6px solid ${K.ink};transform:rotate(45deg)"></div>`);
-  T(w(4, 4) - .1, .5, (k, r) => { qb.style.opacity = clamp(r * 3); at(qb, 360, 780 + Math.sin(r * 3) * 6, Math.max(0, E.back(r))); }, 'lin'); cue(w(4, 4), 'pop');
-  const nob = div(s3, `left:0;top:0;font:700 120px Fredoka;color:${K.mustard};opacity:0`, '?');
-  T(w(4, 8), .5, (k, r) => { nob.style.opacity = k * .9; at(nob, 835, 880 + Math.sin(r * 6) * 10, k); }, 'out');
-  const tFl = w(5, -1) - .1;
-  ticks.push(t => { const out = clamp((t - tFl) / .35); const fs = (1 - out) * (1 + .08 * Math.sin(t * 17)); flame.setAttribute('d', `M560,${1200 - 4} C${560 - 26 * fs},${1200 - 40 * fs} ${560 - 6},${1200 - 92 * fs} 560,${1200 - 110 * fs} C${566},${1200 - 92 * fs} ${560 + 26 * fs},${1200 - 40 * fs} 560,${1200 - 4}Z`); cglow.setAttribute('opacity', 1 - out);
-    smk.forEach((s, i) => { const r = clamp((t - tFl - .1 - i * .25) / 1.6); s.setAttribute('cx', 560 + Math.sin(r * 5 + i) * 26); s.setAttribute('cy', 1180 - r * 360); s.setAttribute('opacity', r > 0 && r < 1 ? .7 * (1 - r) : 0); });
-    const dk = E.inOut(clamp((t - tFl) / 1)); s3.style.filter = `grayscale(${dk * .9}) brightness(${1 - dk * .45})`; qb.style.opacity = t > tFl ? 1 - dk : qb.style.opacity; });
+  // ---------- S3: real photos — alone, then the grave marker, candle goes out ----------
+  const s3 = sceneDiv(root, '#2E2433', 3); iris(s3, B[4].t0 - .35, 540, 1200, .6);
+  const dust3 = []; for (let i = 0; i < 30; i++) dust3.push(div(s3, `left:0;top:0;width:${4 + rnd(i, 4) * 6}px;height:${4 + rnd(i, 4) * 6}px;border-radius:50%;background:#F6D9A6;opacity:.35`));
+  ticks.push(t => dust3.forEach((d, i) => at(d, rnd(i, 5) * 1080 + Math.sin(t * .5 + i) * 40, ((rnd(i, 6) * 1920 - t * (20 + rnd(i, 7) * 30)) % 1920 + 1920) % 1920)));
+  const pBW = photo(s3, 'img/msj_bw.jpg', 700, 860, '50% 30%');
+  T(B[4].t0 - .3, .7, (k, r) => { pBW.el.style.opacity = clamp(r * 3); at(pBW.el, 540, 1060 + 120 * (1 - E.out(r)), .9 + .1 * E.back(r), -3 + 3 * (1 - r)); }, 'lin');
+  ticks.push(t => { pBW.img.style.transform = `scale(${1 + .1 * clamp((t - B[4].t0) / 4)})`; });
+  const qb = div(s3, `left:0;top:0;z-index:5;padding:10px 40px 26px;background:#fff;border:6px solid ${K.ink};border-radius:50px;font:700 90px Fredoka;color:${K.plum};opacity:0`, '…' + `<div style="position:absolute;left:30%;bottom:-24px;width:30px;height:30px;background:#fff;border-right:6px solid ${K.ink};border-bottom:6px solid ${K.ink};transform:rotate(45deg)"></div>`);
+  T(w(4, 4) - .1, .5, (k, r) => { qb.style.opacity = clamp(r * 3); at(qb, 800, 640 + Math.sin(r * 3) * 6, Math.max(0, E.back(r))); }, 'lin'); cue(w(4, 4), 'pop');
+  const nob = div(s3, `left:0;top:0;z-index:5;padding:6px 26px 12px;background:rgba(255,255,255,.18);border:5px dashed rgba(255,255,255,.6);border-radius:40px;font:700 70px Fredoka;color:rgba(255,255,255,.7);opacity:0`, ' ');
+  
+  const pGr = photo(s3, 'img/msj_grave.jpg', 880, 660, '50% 50%');
+  T(B[5].t0 - .25, .7, (k, r) => { pGr.el.style.opacity = clamp(r * 3); at(pGr.el, 540 + 700 * (1 - E.out(r)), 1080, 1, 3 - 8 * (1 - r)); qb.style.opacity = 1 - k; nob.style.opacity = 1 - k; }, 'lin'); cue(B[5].t0, 'click');
+  ticks.push(t => { pGr.img.style.transform = `scale(${1.02 + .08 * clamp((t - B[5].t0) / 4)})`; });
+  const cnd = svgBox(s3, 0, 0, 1080, 1920); cnd.style.zIndex = 4;
+  cnd.innerHTML = `<defs><radialGradient id="cg"><stop offset="0" stop-color="#FFC861" stop-opacity=".7"/><stop offset="1" stop-color="#FFC861" stop-opacity="0"/></radialGradient></defs>`;
+  const cglow = h('circle', { cx: 900, cy: 1450, r: 300, fill: 'url(#cg)' }, cnd);
+  h('rect', { x: 870, y: 1460, width: 60, height: 170, rx: 8, fill: K.cream, ...OL, 'stroke-width': 5 }, cnd);
+  h('ellipse', { cx: 900, cy: 1630, rx: 70, ry: 16, fill: K.mustard, ...OL, 'stroke-width': 5 }, cnd);
+  const flame = h('path', { fill: '#FFB33B', stroke: K.ink, 'stroke-width': 4 }, cnd);
+  const smk = [0, 1, 2].map(i => h('circle', { r: 12 + i * 6, fill: '#BFC6CC', opacity: 0 }, cnd));
+  const tFl = w(5, -1) - .1, FX = 900, FY = 1460;
+  ticks.push(t => { const out = clamp((t - tFl) / .35); const fs = (1 - out) * (1 + .08 * Math.sin(t * 17)); flame.setAttribute('d', `M${FX},${FY - 4} C${FX - 26 * fs},${FY - 40 * fs} ${FX - 6},${FY - 92 * fs} ${FX},${FY - 110 * fs} C${FX + 6},${FY - 92 * fs} ${FX + 26 * fs},${FY - 40 * fs} ${FX},${FY - 4}Z`); cglow.setAttribute('opacity', 1 - out);
+    smk.forEach((s, i) => { const r = clamp((t - tFl - .1 - i * .25) / 1.6); s.setAttribute('cx', FX + Math.sin(r * 5 + i) * 26); s.setAttribute('cy', FY - 20 - r * 360); s.setAttribute('opacity', r > 0 && r < 1 ? .7 * (1 - r) : 0); });
+    const dk = E.inOut(clamp((t - tFl) / 1)); s3.style.filter = `grayscale(${dk * .9}) brightness(${1 - dk * .45})`; });
   cue(tFl, 'squeak');
   // ---------- S4: twist burst + France bedroom ----------
   const s4 = sceneDiv(root, K.coral, 4); iris(s4, B[6].t0 - .2, 540, 1200, .45);
@@ -250,6 +261,10 @@ function buildEyak(cfg) {
   const arcs = bcols.map((c, i) => h('path', { d: `M${-60 + i * 0},${1500 + i * 0} Q540,${820 + i * 34} ${1140},${1500}`, fill: 'none', stroke: c, 'stroke-width': 34, 'stroke-linecap': 'round', pathLength: 1, 'stroke-dasharray': 1, 'stroke-dashoffset': 1, opacity: .95 }, br));
   arcs.forEach((a, i) => anim(a, 'draw', w(13, 4) - .2 + i * .06, .8, { ease: 'inOut' }));
   cue(w(13, 4), 'jingle');
+  const pEnd = photo(s7, 'img/msj_red.jpg', 300, 280, '0% 60%'); pEnd.el.style.zIndex = 5;
+  T(w(13, 1) - .1, .6, (k, r) => { pEnd.el.style.opacity = clamp(r * 3); at(pEnd.el, 200, 1560, .6 + .4 * E.back(r), -6); }, 'lin'); cue(w(13, 1), 'pop');
+  const bs = svgBox(s7, 0, 0, 1080, 1920); bs.style.zIndex = 5; const bh = boyHead(bs, 880, 1560, .62); bh.setAttribute('opacity', 0);
+  T(w(13, 2) - .1, .6, (k, r) => { bh.setAttribute('opacity', 1); bh.setAttribute('transform', `translate(880,${1560 + 400 * (1 - E.back(r))}) scale(.62)`); }, 'lin'); cue(w(13, 2), 'pop');
   outro(root, B);
   captions4(root, B, cfg);
 }
