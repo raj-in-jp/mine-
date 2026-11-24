@@ -68,7 +68,7 @@ out.append(f'''<section class="s">{head(8,"QUICK TEST")}
 out.append(f'''<section class="s">{head(9,"NIHONGO × JLPT")}
 <img src="logo.png" style="position:absolute;left:50%;top:170px;width:260px;margin-left:-130px;border-radius:50%">
 <div class="h" style="top:490px;font-size:76px">Save this for<br><span class="o">exam day</span> 📌</div>
-<div class="h sub" style="top:720px;font-size:42px;line-height:1.3">Part 2 next: はやい · 早い or 速い?<br>Free JLPT notes → link in bio</div>
+<div class="h sub" style="top:720px;font-size:42px;line-height:1.3">Free JLPT notes → link in bio</div>
 <div style="position:absolute;top:960px;left:0;right:0;display:flex;justify-content:center;gap:40px">
  <div class="btn" style="background:var(--card)">📌 Save</div><div class="btn" style="background:var(--acc);color:#fff">+ Follow</div></div>
 </section>''')
