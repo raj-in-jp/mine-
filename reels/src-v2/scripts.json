@@ -149,5 +149,77 @@
    "show": "So every *&* you write is a *2,000-year-old* Latin word.",
    "say": "So every ampersand you write is a two-thousand-year-old Latin word."
   }
+ ],
+ "amp2": [
+  {
+   "show": "The alphabet didn't always end at *Z.*",
+   "say": "The alphabet didn't always end at zee.",
+   "gap": 0.3
+  },
+  {
+   "show": "200 years ago, kids finished it with one more: X, Y, Z… *and.*",
+   "say": "Two-hundred years ago, kids finished it with one more. Ex, why, zee, and.",
+   "gap": 0.35
+  },
+  {
+   "show": "Well, not the word. The *symbol.*",
+   "say": "Well, not the word. The symbol.",
+   "gap": 0.3
+  },
+  {
+   "show": "And it was hiding a *secret.*",
+   "say": "And it was hiding a secret.",
+   "gap": 0.35
+  },
+  {
+   "show": "Ancient Roman scribes wrote *et,* Latin for 'and', so often…",
+   "say": "Ancient Roman scribes wrote ett, Latin for and, so often,",
+   "gap": 0.08
+  },
+  {
+   "show": "that the *E* and the *t* began to *melt* together.",
+   "say": "that the E and the T began to melt together.",
+   "gap": 0.25
+  },
+  {
+   "show": "Until they became one shape. *This* one.",
+   "say": "Until they became one shape. This one.",
+   "gap": 0.35
+  },
+  {
+   "show": "So kids ended the alphabet chanting *and per se and:*",
+   "say": "So kids ended the alphabet chanting, and per say and.",
+   "gap": 0.1
+  },
+  {
+   "show": "'& by itself is *and*'.",
+   "say": "and, by itself, is and.",
+   "gap": 0.3
+  },
+  {
+   "show": "Now say it fast…",
+   "say": "Now say it fast.",
+   "gap": 0.2
+  },
+  {
+   "show": "*and per se and… ampersand.*",
+   "say": "and per say and. Ampersand.",
+   "gap": 0.35
+  },
+  {
+   "show": "A name born from a *classroom chant.*",
+   "say": "A name born from a classroom chant.",
+   "gap": 0.35
+  },
+  {
+   "show": "Some fonts still show the *E* and the *t.*",
+   "say": "Some fonts still show the E and the T.",
+   "gap": 0.3
+  },
+  {
+   "show": "So next time you type it, remember: you're writing *Latin.*",
+   "say": "So next time you type it, remember. You're writing Latin.",
+   "gap": 0.3
+  }
  ]
 }

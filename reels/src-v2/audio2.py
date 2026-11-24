@@ -61,6 +61,9 @@ def sfx(kind):
         L = int(.09 * SR); tt = np.arange(L) / SR; f = 2600 + 1500 * tt / tt[-1]
         s = np.sin(2 * np.pi * np.cumsum(f) / SR) * np.sin(np.linspace(0, np.pi, L)) * .16
         return np.concatenate([s, np.zeros(int(.05 * SR)), s * .8]), 0
+    if kind == 'click':
+        L = int(.09 * SR); tt = np.arange(L) / SR
+        return (np.sin(2*np.pi*420*tt)*np.exp(-tt*90) + lp(rng.standard_normal(L),2)*np.exp(-tt*160)*.4) * .5, 0
     if kind == 'chime':
         L = int(1.2 * SR); tt = np.arange(L) / SR
         x = sum(np.sin(2*np.pi*f*tt)*a for f,a in [(1568,.5),(2093,.35),(3136,.15)]) * np.exp(-tt*3.5)
@@ -78,7 +81,7 @@ import soundfile as sf
 vo, vsr = sf.read(f'vo/{reel}.wav')
 dur = cfg['dur'] + .2; n = int(dur * SR)
 mix = music(dur) * .28
-for c in cfg['cues']:
+for c in [c for c in cfg['cues'] if c['type'] != 'whoosh']:
     x, off = sfx(c['type']); st = int((c['t'] + off) * SR)
     if st < 0: x = x[-st:]; st = 0
     e = min(n, st + len(x)); mix[st:e] += x[:e - st] * .55

@@ -6,7 +6,7 @@ spec = importlib.util.spec_from_file_location('orph', '../tts/orpheus.py');
 cwd = os.getcwd(); os.chdir('../tts'); orph = importlib.util.module_from_spec(spec); spec.loader.exec_module(orph); os.chdir(cwd)
 wm = WhisperModel('base.en', device='cpu', compute_type='int8')
 norm = lambda w: re.sub(r'[^a-z]', '', w.lower())
-TEMPO = 1.07; SR = 24000
+TEMPO = float(os.environ.get('TEMPO', '1.07')); SR = 24000
 def load16(a, sr):
     n = int(len(a) * 16000 / sr); return np.interp(np.linspace(0, len(a) - 1, n), np.arange(len(a)), a).astype(np.float32)
 def trim(a):
@@ -20,8 +20,9 @@ for reel in (sys.argv[1:] or scripts):
         say = b['say']; sw = say.split(); best = None
         for attempt in range(3):
             raw = f'vo/{reel}/b{i}_raw.wav'
-            orph.speak(say, 'dan', raw)
-            subprocess.run(['ffmpeg', '-y', '-loglevel', 'error', '-i', raw, '-af', f'atempo={TEMPO}', f'vo/{reel}/b{i}.wav'], check=True)
+            if not (os.environ.get('REUSE') and os.path.exists(f'vo/{reel}/b{i}.wav')):
+                orph.speak(say, 'dan', raw)
+                subprocess.run(['ffmpeg', '-y', '-loglevel', 'error', '-i', raw, '-af', f'atempo={TEMPO}', f'vo/{reel}/b{i}.wav'], check=True)
             a, _ = sf.read(f'vo/{reel}/b{i}.wav'); a = trim(a)
             segs, _ = wm.transcribe(load16(a, SR), word_timestamps=True)
             ww = [(w.word.strip(), w.start, w.end) for s in segs for w in s.words]
@@ -30,7 +31,7 @@ for reel in (sys.argv[1:] or scripts):
             ok = score > .78 and dur < len(sw) * .75 + 1.5
             print(reel, i, f'try{attempt}', f'score={score:.2f}', f'{dur:.1f}s', '|', ' '.join(x[0] for x in ww), flush=True)
             if best is None or score > best[0]: best = (score, a, ww)
-            if ok: break
+            if ok or os.environ.get('REUSE'): break
         score, a, ww = best
         # align say words -> whisper words
         A = [norm(x) for x in sw]; B = [norm(x[0]) for x in ww]
@@ -47,7 +48,7 @@ for reel in (sys.argv[1:] or scripts):
                 lo = prev if prev is not None else -1; hi = nxt if nxt is not None else len(A)
                 frac = (k - lo) / (hi - lo); st = s0 + (s1 - s0) * frac; times[k] = (st, st + .25)
         beats_out.append({'t0': round(t, 3), 't1': round(t + dur, 3), 'words': [round(t + s, 3) for s, e in times], 'score': round(score, 2)})
-        full.append(a); full.append(np.zeros(int(.4 * SR))); t += dur + .4
+        g = b.get('gap', .4); full.append(a); full.append(np.zeros(int(g * SR))); t += dur + g
     full.append(np.zeros(int(2.8 * SR)))
     sf.write(f'vo/{reel}.wav', np.concatenate(full), SR)
     json.dump({'beats': beats_out, 'dur': round(t + 2.8, 2)}, open(f'vo/{reel}.json', 'w'))
