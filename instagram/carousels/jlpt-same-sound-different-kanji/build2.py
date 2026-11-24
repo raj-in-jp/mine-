@@ -1,5 +1,5 @@
 import re
-TOTAL=10
+TOTAL=9
 def rb(s):  # {漢字|かな} -> ruby
     return re.sub(r'\{([^|}]+)\|([^}]+)\}',r'<ruby>\1<rt>\2</rt></ruby>',s)
 def head(i,tag="JLPT TRAP · SAME SOUND"):
@@ -65,16 +65,7 @@ out.append(f'''<section class="s">{head(8,"QUICK TEST")}
 <div class="h" style="top:150px;font-size:86px">Your <span class="o">turn</span> ✍️</div>
 <div class="h sub" style="top:280px;font-size:40px">Pick the right kanji.</div>
 {qs}<div class="h" style="top:1150px;font-size:40px">Comment your answers 👇 <span class="t">(like 1A 2A 3A)</span></div>{sw}</section>''')
-out.append(f'''<section class="s">{head(9,"SCREENSHOT THIS 📸")}
-<div class="h" style="top:150px;font-size:80px">The <span class="o">cheat sheet</span></div>
-<div class="card flow" style="top:320px">
- <div class="fr"><div class="fa">会<span>う</span></div><div class="fq jp" style="font-size:38px">a person<br><span style="font-weight:500;color:var(--muted)">{rb("{友|とも}だちに{会|あ}う")}</span></div></div>
- <div class="fr"><div class="fa">合<span>う</span></div><div class="fq jp" style="font-size:38px">fits · matches<br><span style="font-weight:500;color:var(--muted)">{rb("サイズが{合|あ}う")}</span></div></div>
- <div class="fr"><div class="fa">遭<span>う</span></div><div class="fq jp" style="font-size:38px">trouble<br><span style="font-weight:500;color:var(--muted)">{rb("{事故|じこ}に{遭|あ}う")}</span></div></div>
- <div class="fr"><div class="fa" style="opacity:.55">逢<span>う</span></div><div class="fq jp" style="font-size:34px;color:var(--muted)">bonus · songs &amp; dramas</div></div>
-</div>
-{sw}</section>''')
-out.append(f'''<section class="s">{head(10,"NIHONGO × JLPT")}
+out.append(f'''<section class="s">{head(9,"NIHONGO × JLPT")}
 <img src="logo.png" style="position:absolute;left:50%;top:170px;width:260px;margin-left:-130px;border-radius:50%">
 <div class="h" style="top:490px;font-size:76px">Save this for<br><span class="o">exam day</span> 📌</div>
 <div class="h sub" style="top:720px;font-size:42px;line-height:1.3">Part 2 next: はやい · 早い or 速い?<br>Free JLPT notes → link in bio</div>
