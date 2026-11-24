@@ -1,0 +1,153 @@
+{
+ "nice": [
+  {
+   "show": "*Nice* used to be an *insult.*",
+   "say": "Nice used to be an insult."
+  },
+  {
+   "show": "700 years ago, calling someone *nice* meant you thought they were a *fool.*",
+   "say": "Seven-hundred years ago, calling someone nice meant you thought they were a fool."
+  },
+  {
+   "show": "It comes from the Latin *nescius,* meaning *ignorant.*",
+   "say": "It comes from the Latin NESS-ee-us, meaning ignorant."
+  },
+  {
+   "show": "It travelled through *Old French* into English around the 1300s.",
+   "say": "It travelled through Old French into English around the thirteen-hundreds."
+  },
+  {
+   "show": "Then it drifted: *fussy,* then *shy,* then *precise…*",
+   "say": "Then it drifted. Fussy, then shy, then precise."
+  },
+  {
+   "show": "Until, in the 1700s, it finally meant *pleasant.*",
+   "say": "Until, in the seventeen-hundreds, it finally meant pleasant.",
+   "navy": true
+  },
+  {
+   "show": "So when someone calls you *nice,* it took 700 years to become a *compliment.*",
+   "say": "So when someone calls you nice, it took seven-hundred years to become a compliment."
+  }
+ ],
+ "silly": [
+  {
+   "show": "*Silly* used to be a *compliment.*",
+   "say": "Silly used to be a compliment."
+  },
+  {
+   "show": "In Old English, *sælig* meant *blessed,* *happy,* *lucky.*",
+   "say": "In Old English, SAY-lee meant blessed, happy, lucky."
+  },
+  {
+   "show": "Its cousin is still alive in German: *selig,* still meaning *blessed.*",
+   "say": "Its cousin is still alive in German. ZAY-lish, still meaning blessed."
+  },
+  {
+   "show": "Over centuries the spelling shifted: *sælig,* *sely,* *silly…*",
+   "say": "Over centuries the spelling shifted. SAY-lee, SEE-lee, silly."
+  },
+  {
+   "show": "and the meaning slid: *innocent,* then *pitiable,* then *foolish.*",
+   "say": "And the meaning slid. Innocent, then pitiable, then foolish."
+  },
+  {
+   "show": "From *blessed* to *foolish.* Language is wild.",
+   "say": "From blessed to foolish. Language is wild.",
+   "navy": true
+  }
+ ],
+ "muscle": [
+  {
+   "show": "Every time you flex, you're showing off a *little mouse.*",
+   "say": "Every time you flex, you're showing off a little mouse."
+  },
+  {
+   "show": "*Muscle* comes from Latin *musculus,* meaning *little mouse.*",
+   "say": "Muscle comes from Latin MUSS-coo-luss, meaning little mouse."
+  },
+  {
+   "show": "The Romans thought a flexing muscle looked like a *mouse* moving under the skin.",
+   "say": "The Romans thought a flexing muscle looked like a mouse moving under the skin."
+  },
+  {
+   "show": "And the same word gave us another animal: the *mussel.*",
+   "say": "And the same word gave us another animal. The mussel."
+  },
+  {
+   "show": "So your biceps are, technically, *mice.*",
+   "say": "So your biceps are, technically, mice.",
+   "navy": true
+  }
+ ],
+ "goodbye": [
+  {
+   "show": "*Goodbye* is a prayer in *disguise.*",
+   "say": "Goodbye is a prayer in disguise."
+  },
+  {
+   "show": "In the 1500s, people said *God be with ye.*",
+   "say": "In the fifteen-hundreds, people said God be with ye."
+  },
+  {
+   "show": "Said fast, again and again, it got squashed: *godbwye.*",
+   "say": "Said fast, again and again, it got squashed. God-bwye."
+  },
+  {
+   "show": "Then *good day* and *good night* rubbed off on it, and *God* became *good.*",
+   "say": "Then good day and good night rubbed off on it, and God became good."
+  },
+  {
+   "show": "Its neighbours do the same: *adieu* and *adiós* both mean *to God.*",
+   "say": "Its neighbours do the same. Ah-DYUH and ah-DYOSE both mean to God."
+  },
+  {
+   "show": "So every *goodbye* is a tiny *blessing.*",
+   "say": "So every goodbye is a tiny blessing.",
+   "navy": true
+  }
+ ],
+ "ampersand": [
+  {
+   "show": "The alphabet used to have *27 letters.*",
+   "say": "The alphabet used to have twenty-seven letters."
+  },
+  {
+   "show": "And you still use the last one every day.",
+   "say": "And you still use the last one every day."
+  },
+  {
+   "show": "Two thousand years ago, Romans wrote *et,* Latin for *and.*",
+   "say": "Two thousand years ago, Romans wrote ett, Latin for and."
+  },
+  {
+   "show": "Written fast, over and over, the *E* and *t* fused into one *symbol.*",
+   "say": "Written fast, over and over, the E and T fused into one symbol."
+  },
+  {
+   "show": "In the 1800s, kids recited it right after *Z,* as a letter.",
+   "say": "In the eighteen-hundreds, kids recited it right after zee, as a letter."
+  },
+  {
+   "show": "Saying *and* alone sounded odd, so they said *and per se and,* meaning 'and, by itself'.",
+   "say": "Saying and alone sounded odd, so they said, and per say and, meaning, and, by itself."
+  },
+  {
+   "show": "Mumbled fast, it blurred into one word…",
+   "say": "Mumbled fast, it blurred into one word."
+  },
+  {
+   "show": "*Ampersand.*",
+   "say": "Ampersand.",
+   "navy": true
+  },
+  {
+   "show": "Some fonts still show the *E* and *t* hiding inside.",
+   "say": "Some fonts still show the E and T hiding inside."
+  },
+  {
+   "show": "So every *&* you write is a *2,000-year-old* Latin word.",
+   "say": "So every ampersand you write is a two-thousand-year-old Latin word."
+  }
+ ]
+}
