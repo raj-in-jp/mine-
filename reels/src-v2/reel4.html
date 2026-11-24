@@ -44,14 +44,16 @@ html,body{margin:0;background:#000}
 <script src="reels2.js"></script>
 <script src="reels3.js"></script>
 <script src="reels4.js"></script>
+<script src="reels5.js"></script>
 <script>
 (async () => {
   const r = new URLSearchParams(location.search).get('r') || 'nice';
   MAP = await (await fetch('map.json')).json();
   VO = await (await fetch(`vo/${r === 'amp3' ? 'amp2' : r}.json`)).json();
   const S = await (await fetch('scripts.json')).json();
-  for (const f of ['400 80px "EB Garamond"', 'italic 700 80px "EB Garamond"', 'italic 600 80px "EB Garamond"', 'italic 500 80px "EB Garamond"', 'italic 400 80px "EB Garamond"', '500 80px "EB Garamond"', '600 80px "EB Garamond"', '400 80px "Libre Caslon Text"', '900 80px Fraunces', '400 80px "Bebas Neue"', '900 80px "Bodoni Moda"', '800 80px Inter', '700 80px Fredoka', '900 80px Cinzel', '800 80px Outfit', '900 80px Rubik', '700 80px Oswald']) await document.fonts.load(f);
-  if (r === 'amp3') buildAmp3(S['amp2']); else if (r === 'amp2') buildAmp2(S[r]); else build(r, S[r], VIS[r]);
+  for (const f of ['400 80px "EB Garamond"', 'italic 700 80px "EB Garamond"', 'italic 600 80px "EB Garamond"', 'italic 500 80px "EB Garamond"', 'italic 400 80px "EB Garamond"', '500 80px "EB Garamond"', '600 80px "EB Garamond"', '400 80px "Libre Caslon Text"', '900 80px Fraunces', '400 80px "Bebas Neue"', '900 80px "Bodoni Moda"', '800 80px Inter', '700 80px Fredoka', '900 80px Cinzel', '800 80px Outfit', '900 80px Rubik', '700 80px Oswald', '500 80px Rubik', '700 80px Rubik', '600 80px Outfit']) await document.fonts.load(f);
+  const SB = { eyak: typeof buildEyak!=='undefined'&&buildEyak, babies: typeof buildBabies!=='undefined'&&buildBabies, hebrew: typeof buildHebrew!=='undefined'&&buildHebrew };
+  if (SB[r]) SB[r](S[r]); else if (r === 'amp3') buildAmp3(S['amp2']); else if (r === 'amp2') buildAmp2(S[r]); else build(r, S[r], VIS[r]);
   document.getElementById('stage').appendChild(document.getElementById('foot'));
   render(0); window.READY = true;
 })();

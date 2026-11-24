@@ -221,5 +221,211 @@
    "say": "So next time you type it, remember. You're writing Latin.",
    "gap": 0.3
   }
+ ],
+ "eyak": [
+  {
+   "show": "In *2008,* a woman died…",
+   "say": "In two-thousand-eight, a woman died.",
+   "gap": 0.15
+  },
+  {
+   "show": "and an entire *language* died with her.",
+   "say": "and an entire language died with her.",
+   "gap": 0.45
+  },
+  {
+   "show": "Her name was *Marie Smith Jones.*",
+   "say": "Her name was Marie Smith Jones.",
+   "gap": 0.2
+  },
+  {
+   "show": "The last native speaker of *Eyak,* a language from *Alaska.*",
+   "say": "The last native speaker of EE-yak, a language from Alaska.",
+   "gap": 0.35
+  },
+  {
+   "show": "For years, she had *no one* left to speak it with.",
+   "say": "For years, she had no one left to speak it with.",
+   "gap": 0.3
+  },
+  {
+   "show": "When she passed, the last voice that grew up with it went *quiet.*",
+   "say": "When she passed, the last voice that grew up with it, went quiet.",
+   "gap": 0.5
+  },
+  {
+   "show": "But here's the *twist.*",
+   "say": "But here's the twist.",
+   "gap": 0.3
+  },
+  {
+   "show": "Thousands of miles away, in *France,* a 12-year-old boy found old *recordings*",
+   "say": "Thousands of miles away, in France, a twelve-year-old boy found old recordings",
+   "gap": 0.05
+  },
+  {
+   "show": "and a linguist's *notes.*",
+   "say": "and a linguist's notes.",
+   "gap": 0.35
+  },
+  {
+   "show": "He'd never been to Alaska. He just couldn't let it *disappear.*",
+   "say": "He'd never been to Alaska. He just couldn't let it disappear.",
+   "gap": 0.3
+  },
+  {
+   "show": "So he taught himself *Eyak.*",
+   "say": "So he taught himself EE-yak.",
+   "gap": 0.35
+  },
+  {
+   "show": "Years later, he flew to *Alaska* to help teach it again.",
+   "say": "Years later, he flew to Alaska to help teach it again.",
+   "gap": 0.45
+  },
+  {
+   "show": "A language with no speakers… found a *new one.*",
+   "say": "A language with no speakers, found a new one.",
+   "gap": 0.35
+  },
+  {
+   "show": "One person can be the *bridge.*",
+   "say": "One person can be the bridge.",
+   "gap": 0.3
+  }
+ ],
+ "babies": [
+  {
+   "show": "Babies *cry* with an *accent.*",
+   "say": "Babies cry with an accent.",
+   "gap": 0.3
+  },
+  {
+   "show": "No, really.",
+   "say": "No, really.",
+   "gap": 0.35
+  },
+  {
+   "show": "In *2009,* scientists recorded newborns just a few *days* old.",
+   "say": "In two-thousand-nine, scientists recorded newborns just a few days old.",
+   "gap": 0.3
+  },
+  {
+   "show": "Some had *French* parents. Others, *German.*",
+   "say": "Some had French parents. Others, German.",
+   "gap": 0.3
+  },
+  {
+   "show": "Then they looked at the *melody* of every cry.",
+   "say": "Then they looked at the melody of every cry.",
+   "gap": 0.3
+  },
+  {
+   "show": "And the cries sounded… *different.*",
+   "say": "And the cries sounded, different.",
+   "gap": 0.4
+  },
+  {
+   "show": "French babies' cries tended to *rise* at the end, just like *French.*",
+   "say": "French babies' cries tended to rise at the end, just like French.",
+   "gap": 0.3
+  },
+  {
+   "show": "German babies' cries tended to *fall,* just like *German.*",
+   "say": "German babies' cries tended to fall, just like German.",
+   "gap": 0.45
+  },
+  {
+   "show": "How? In the last months of pregnancy, babies can hear their *mother's voice,*",
+   "say": "How? In the last months of pregnancy, babies can hear their mother's voice,",
+   "gap": 0.1
+  },
+  {
+   "show": "and they start picking up the *melody* of her language.",
+   "say": "and they start picking up the melody of her language.",
+   "gap": 0.3
+  },
+  {
+   "show": "Not the words. The *music.*",
+   "say": "Not the words. The music.",
+   "gap": 0.45
+  },
+  {
+   "show": "So before you said your *first word…*",
+   "say": "So before you said your first word,",
+   "gap": 0.15
+  },
+  {
+   "show": "you already had an *accent.*",
+   "say": "you already had an accent.",
+   "gap": 0.3
+  }
+ ],
+ "hebrew": [
+  {
+   "show": "For about *1,700 years,* nobody grew up speaking this language.",
+   "say": "For about seventeen-hundred years, nobody grew up speaking this language.",
+   "gap": 0.3
+  },
+  {
+   "show": "Today, about *nine million* people do.",
+   "say": "Today, about nine million people do.",
+   "gap": 0.3
+  },
+  {
+   "show": "It's *Hebrew.*",
+   "say": "It's Hebrew.",
+   "gap": 0.4
+  },
+  {
+   "show": "It never fully vanished. It lived on in *prayers* and *books.*",
+   "say": "It never fully vanished. It lived on in prayers and books.",
+   "gap": 0.25
+  },
+  {
+   "show": "But no child had it as a *first language.*",
+   "say": "But no child had it as a first language.",
+   "gap": 0.45
+  },
+  {
+   "show": "Then, in the *1880s,* a man named *Eliezer Ben-Yehuda* made a bold decision.",
+   "say": "Then, in the eighteen-eighties, a man named Eliezer Ben-Yehuda made a bold decision.",
+   "gap": 0.3
+  },
+  {
+   "show": "His son would hear *only Hebrew,* from the very first day.",
+   "say": "His son would hear only Hebrew, from the very first day.",
+   "gap": 0.35
+  },
+  {
+   "show": "One problem: ancient Hebrew had no words for *modern things.*",
+   "say": "One problem. Ancient Hebrew had no words for modern things.",
+   "gap": 0.3
+  },
+  {
+   "show": "So he *invented* them.",
+   "say": "So he invented them.",
+   "gap": 0.25
+  },
+  {
+   "show": "*Newspaper.* *Dictionary.* Hundreds more.",
+   "say": "Newspaper. Dictionary. Hundreds more.",
+   "gap": 0.4
+  },
+  {
+   "show": "His son became the first native Hebrew speaker in *modern times.*",
+   "say": "His son became the first native Hebrew speaker in modern times.",
+   "gap": 0.45
+  },
+  {
+   "show": "One family. One stubborn *dream.*",
+   "say": "One family. One stubborn dream.",
+   "gap": 0.3
+  },
+  {
+   "show": "And a language *woke up.*",
+   "say": "And a language woke up.",
+   "gap": 0.3
+  }
  ]
 }
