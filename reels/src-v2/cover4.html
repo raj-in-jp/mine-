@@ -1,0 +1,47 @@
+<!doctype html><html><head><meta charset="utf-8"><style>
+html,body{margin:0}
+#c{position:relative;width:1080px;height:1920px;overflow:hidden;font-family:"EB Garamond";color:#231F1B;
+ background:#F3E9DC;background-image:radial-gradient(circle at 20px 20px, rgba(200,85,61,.16) 7px, transparent 8px),radial-gradient(circle at 90px 80px, rgba(42,157,143,.14) 6px, transparent 7px);background-size:140px 140px}
+.a{position:absolute}
+.blk{position:absolute;box-sizing:border-box;border:6px solid #231F1B;border-radius:24px;display:flex;align-items:center;justify-content:center;font:900 130px Fraunces;color:#F7F0E6}
+.shelf{position:absolute;left:-20px;right:-20px;height:54px;background:#A0643A;border:6px solid #231F1B;border-radius:10px;box-shadow:0 20px 0 #74482A}
+.t{position:absolute;left:0;right:0;text-align:center}
+.mk{background:linear-gradient(#F3D27F,#F3D27F) no-repeat 0 88%/100% 40%;padding:0 10px}
+.conf{position:absolute;width:22px;height:22px}
+.rays{position:absolute;width:1400px;height:1400px;border-radius:50%;background:repeating-conic-gradient(rgba(233,180,76,.38) 0 10deg,transparent 10deg 20deg);-webkit-mask:radial-gradient(circle,#000 30%,transparent 70%)}
+</style></head><body><div id="c"></div>
+<script>
+const v=new URLSearchParams(location.search).get('v')||'a', c=document.getElementById('c');
+const add=(h)=>c.insertAdjacentHTML('beforeend',h);
+const col={rust:'#C8553D',teal:'#2A9D8F',mus:'#E9B44C',plum:'#6D597A',coral:'#F4A261',navy:'#264653',green:'#6A994E'};
+const sh=(x)=>{const n=parseInt(x.slice(1),16);return `rgb(${(n>>16)*.72|0},${((n>>8)&255)*.72|0},${(n&255)*.72|0})`};
+const blk=(ch,x,y,s,cl,rot=0,font)=>add(`<div class="blk" style="left:${x-s/2}px;top:${y-s/2}px;width:${s}px;height:${s}px;background:${cl};box-shadow:0 ${s*.09}px 0 ${sh(cl)};transform:rotate(${rot}deg);${font?'font:'+font+';color:#231F1B':''};font-size:${font?'':s*.7+'px'}">${ch}</div>`);
+const conf=(cx,cy,n,R)=>{const cs=Object.values(col);for(let i=0;i<n;i++){const a=i/n*6.283+(i%3)*.4,d=R*(.5+((i*37)%10)/18);add(`<div class="conf" style="left:${cx+Math.cos(a)*d}px;top:${cy+Math.sin(a)*d*.8}px;background:${cs[i%cs.length]};border-radius:${i%2?'50%':'4px'};transform:rotate(${i*37}deg)"></div>`)}};
+if(v==='a'){ // hook: the alphabet didn't end at Z
+  add(`<div class="t" style="top:330px;font:600 30px Inter;letter-spacing:.32em;color:${col.rust}">WORD ORIGINS</div>`);
+  add(`<div class="t" style="top:390px;font:500 136px/1.02 'EB Garamond'">The alphabet<br>didn't end at <span class="mk" style="font-style:italic;font-weight:700;color:${col.rust}">Z</span></div>`);
+  add(`<div class="rays" style="left:${780-700}px;top:${1110-700}px"></div>`);
+  add(`<div class="shelf" style="top:1250px"></div>`);
+  blk('X',140,1150,170,col.teal,-4); blk('Y',330,1150,170,col.plum,3); blk('Z',520,1150,170,col.coral,-2);
+  add(`<div class="blk" style="left:${790-150}px;top:${1095-150}px;width:300px;height:300px;background:${col.mus};box-shadow:0 26px 0 ${sh(col.mus)},0 0 90px 30px rgba(233,180,76,.55);font:400 220px 'Libre Caslon Text';color:#231F1B;transform:rotate(6deg)">&amp;</div>`);
+  conf(790,1080,30,330);
+  add(`<div class="t" style="top:1450px;font:italic 500 70px 'EB Garamond';color:#5A5247">Meet the 27th letter.</div>`);
+}
+if(v==='b'){ // the 27th letter, big block
+  add(`<div class="rays" style="left:-160px;top:${1000-700}px"></div>`);
+  add(`<div class="t" style="top:330px;font:600 30px Inter;letter-spacing:.32em;color:${col.rust}">WORD ORIGINS</div>`);
+  add(`<div class="t" style="top:390px;font:500 150px/1 'EB Garamond'">The <span class="mk" style="font-style:italic;font-weight:700;color:${col.rust}">27th</span> letter</div>`);
+  add(`<div class="blk" style="left:${540-230}px;top:${1010-230}px;width:460px;height:460px;background:${col.mus};box-shadow:0 38px 0 ${sh(col.mus)},0 0 120px 40px rgba(233,180,76,.5);font:400 340px 'Libre Caslon Text';color:#231F1B;transform:rotate(-4deg)">&amp;</div>`);
+  conf(540,1000,34,430);
+  add(`<div class="t" style="top:1380px;font:italic 500 74px 'EB Garamond';color:#5A5247">You use it every day.</div>`);
+}
+if(v==='c'){ // mystery: empty slot after Z
+  add(`<div class="t" style="top:330px;font:600 30px Inter;letter-spacing:.32em;color:${col.rust}">WORD ORIGINS</div>`);
+  add(`<div class="t" style="top:390px;font:500 128px/1.04 'EB Garamond'">What came<br><span class="mk" style="font-style:italic;font-weight:700;color:${col.rust}">after Z?</span></div>`);
+  add(`<div class="shelf" style="top:1210px"></div>`);
+  blk('W',120,1110,160,col.green,-3); blk('X',300,1110,160,col.teal,2); blk('Y',480,1110,160,col.plum,-2); blk('Z',660,1110,160,col.coral,3);
+  add(`<div class="a" style="left:${880-85}px;top:${1110-85}px;width:170px;height:170px;box-sizing:border-box;border:8px dashed ${col.rust};border-radius:24px;display:flex;align-items:center;justify-content:center;font:700 130px Fraunces;color:${col.rust};background:rgba(200,85,61,.08)">?</div>`);
+  add(`<div class="t" style="top:1400px;font:italic 500 70px 'EB Garamond';color:#5A5247">Kids used to know.</div>`);
+}
+add(`<div class="t" style="top:1560px;font:italic 500 46px 'EB Garamond';color:#5A5247">@wordology.lab</div>`);
+</script></body></html>
