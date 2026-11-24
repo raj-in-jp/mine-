@@ -434,7 +434,7 @@ function bearded(svg, x, y, s) {
 function buildHebrew(cfg) {
   const B = VO.beats; DURATION = VO.dur; const w = wfn(B);
   const root = div(document.getElementById('stage'), 'left:0;top:0;width:1080px;height:1920px;overflow:hidden');
-  const HEB = '"Rubik"';
+  const HEB = 'Rubik';
   // S1: night, sleeping scroll, counter 1,700 -> 9,000,000
   const s1 = div(root, `left:0;top:0;width:1080px;height:1920px;overflow:hidden;background:#1D2B3A;z-index:1`);
   const st = []; for (let i = 0; i < 50; i++) st.push(div(s1, `left:${rnd(i, 1) * 1080}px;top:${400 + rnd(i, 2) * 1400}px;width:${4 + rnd(i, 3) * 6}px;height:${4 + rnd(i, 3) * 6}px;border-radius:50%;background:#fff`));
