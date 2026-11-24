@@ -298,15 +298,17 @@ function buildBabies(cfg) {
   const dots = div(s1, 'left:-100px;top:-100px;width:1300px;height:2200px;background-image:radial-gradient(circle at 30px 30px, rgba(255,255,255,.5) 10px, transparent 11px),radial-gradient(circle at 90px 90px, rgba(244,162,97,.35) 8px, transparent 9px);background-size:120px 120px');
   ticks.push(t => dots.style.transform = `translate(${-t * 10 % 120}px,${-t * 16 % 120}px)`);
   const sv1 = svgBox(s1, 0, 0, 1080, 1920);
-  const bA = baby(sv1, 290, 1150, 1.05), bB = baby(sv1, 790, 1150, 1.05);
+  const bA = baby(sv1, 290, 1150, 1.4), bB = baby(sv1, 790, 1150, 1.4);
   const wav = [0, 1].map(i => h('path', { fill: 'none', stroke: i ? K.rust : K.navy, 'stroke-width': 10, 'stroke-linecap': 'round' }, sv1));
   ticks.push(t => { const cry = t < B[1].t0; babySet(sv1, bA, t, cry); babySet(sv1, bB, t + .3, cry);
-    [bA, bB].forEach((b, i) => { const yy = 1150 + Math.abs(Math.sin(t * (cry ? 9 : 2) + i)) * (cry ? -14 : -4); b.g.setAttribute('transform', `translate(${i ? 790 : 290},${yy}) scale(1.05)`); });
+    [bA, bB].forEach((b, i) => { const yy = 1150 + Math.abs(Math.sin(t * (cry ? 9 : 2) + i)) * (cry ? -14 : -4); b.g.setAttribute('transform', `translate(${i ? 790 : 290},${yy + 60}) scale(1.4)`); });
     if (t > B[1].t0 && t < B[1].t1 + .3) { bB.eyes.forEach((e, j) => e.setAttribute('d', j ? `M26,-50 q18,-14 36,0` : `M-62,-56 l36,0`)); } else bB.eyes.forEach((e, j) => e.setAttribute('d', `M${(j ? 44 : -44) - 18},-50 q18,14 36,0`));
-    wav.forEach((p, i) => { let d = ''; const cx = 540, amp = t < B[1].t0 ? 40 : 6; for (let k = 0; k <= 30; k++) { const x = cx - 120 + k * 8, y = 840 + i * 60 + Math.sin(k * .9 - t * 14 + i) * amp * Math.sin(Math.PI * k / 30); d += (d ? ' L' : 'M') + x + ',' + y.toFixed(1); } p.setAttribute('d', d); }); });
+    wav.forEach((p, i) => { let d = ''; const cx = 540, amp = t < B[1].t0 ? 40 : 6; for (let k = 0; k <= 30; k++) { const x = cx - 220 + k * 15, y = 640 + i * 70 + Math.sin(k * .9 - t * 14 + i) * amp * Math.sin(Math.PI * k / 30); d += (d ? ' L' : 'M') + x + ',' + y.toFixed(1); } p.setAttribute('d', d); }); });
   const acc = div(s1, `left:0;top:0;padding:14px 40px 20px;border:9px solid ${K.rust};border-radius:20px;font:700 96px Oswald;letter-spacing:6px;color:${K.rust};background:rgba(247,240,230,.9);opacity:0`, 'ACCENT');
-  anim(acc, 'stamp', w(0, 4) - .08, .4, { base: 'translate(540px,1560px) translate(-50%,-50%)', rot: -8 }); cue(w(0, 4), 'stamp');
+  anim(acc, 'stamp', w(0, 4) - .08, .4, { base: 'translate(540px,1470px) translate(-50%,-50%)', rot: -8 }); cue(w(0, 4), 'stamp');
   for (let i = 0; i < 3; i++) cue(.15 + i * .45, 'squeak');
+  const rings1 = []; for (let i = 0; i < 6; i++) rings1.push(div(s1, `left:0;top:0;width:160px;height:160px;border-radius:50%;border:8px solid ${i % 2 ? K.rust : K.navy};opacity:0`));
+  ticks.push(t => rings1.forEach((rg, i) => { const r = ((t * .9 + i / 3) % 1), cx = i % 2 ? 790 : 290; rg.style.opacity = t < B[1].t0 ? (1 - r) * .7 : 0; at(rg, cx, 1180, .5 + r * 2.2); }));
   // S2: lab: calendar 2009, hospital bracelet, mic + screen; flags
   const s2 = sceneDiv(root, '#E8F1F2', 2); iris(s2, B[2].t0 - .3, 540, 1150, .55);
   const sv2 = svgBox(s2, 0, 0, 1080, 1920);
@@ -332,15 +334,15 @@ function buildBabies(cfg) {
   const fF = half(0, ['#2E4FA0', '#F7F0E6', '#D7263D'], false), fG = half(540, ['#2B2B2B', '#D7263D', '#F2C230'], true);
   [fF, fG].forEach(g => g.setAttribute('opacity', 0));
   const clip3 = h('rect', { x: 0, y: 560, width: 1080, height: 1140, fill: 'none', ...OL, 'stroke-width': 8 }, sv3);
-  const pad = h('rect', { x: 60, y: 980, width: 960, height: 520, rx: 60, fill: 'rgba(255,255,255,.8)', ...OL }, sv3);
-  const bF = baby(sv3, 290, 1240, .9, 'beret'), bG = baby(sv3, 790, 1240, .9, 'beanie');
+  
+  const bF = baby(sv3, 290, 1240, 1.25, 'beret'), bG = baby(sv3, 790, 1240, 1.25, 'beanie');
   const nm = (txt, x, col) => { const el = div(s3, `left:0;top:0;padding:8px 30px 14px;background:${col};border:5px solid ${K.ink};border-radius:18px;font:italic 700 60px 'EB Garamond';color:#fff;opacity:0`, txt); return el; };
   const nF = nm('French', 290, '#2E4FA0'), nG = nm('German', 790, '#2B2B2B');
-  T(w(3, 2) - .15, .5, (k, r) => { fF.setAttribute('opacity', k * .9); nF.style.opacity = clamp(r * 3); at(nF, 290, 1610, Math.max(0, E.back(r))); }, 'lin'); cue(w(3, 2), 'pop');
-  T(w(3, 5) - .15, .5, (k, r) => { fG.setAttribute('opacity', k * .9); nG.style.opacity = clamp(r * 3); at(nG, 790, 1610, Math.max(0, E.back(r))); }, 'lin'); cue(w(3, 5), 'pop');
+  T(w(3, 2) - .15, .5, (k, r) => { fF.setAttribute('opacity', k * .9); nF.style.opacity = clamp(r * 3); at(nF, 290, 1560, Math.max(0, E.back(r))); }, 'lin'); cue(w(3, 2), 'pop');
+  T(w(3, 5) - .15, .5, (k, r) => { fG.setAttribute('opacity', k * .9); nG.style.opacity = clamp(r * 3); at(nG, 790, 1560, Math.max(0, E.back(r))); }, 'lin'); cue(w(3, 5), 'pop');
   [bF, bG].forEach(b => { b.g.setAttribute('opacity', 0); });
-  T(B[3].t0, .5, (k, r) => [[bF, 290], [bG, 790]].forEach(([b, x], i) => { b.g.setAttribute('opacity', 1); b.g.setAttribute('transform', `translate(${x},${1240 + 600 * (1 - bounceOut(r))}) scale(.9)`); }), 'lin');
-  ticks.push(t => { if (t > B[3].t0 + .5) [[bF, 290], [bG, 790]].forEach(([b, x], i) => { babySet(sv3, b, t + i, false); b.g.setAttribute('transform', `translate(${x},${1240 + Math.sin(t * 2.4 + i * 2) * 10}) scale(.9)`); }); });
+  T(B[3].t0, .5, (k, r) => [[bF, 290], [bG, 790]].forEach(([b, x], i) => { b.g.setAttribute('opacity', 1); b.g.setAttribute('transform', `translate(${x},${1180 + 600 * (1 - bounceOut(r))}) scale(1.25)`); }), 'lin');
+  ticks.push(t => { if (t > B[3].t0 + .5) [[bF, 290], [bG, 790]].forEach(([b, x], i) => { babySet(sv3, b, t + i, false); b.g.setAttribute('transform', `translate(${x},${1180 + Math.sin(t * 2.4 + i * 2) * 10}) scale(1.25)`); }); });
   // S4: melody chart, rising vs falling
   const s4 = sceneDiv(root, K.cream, 4); iris(s4, B[4].t0 - .3, 540, 1240, .55);
   const sv4 = svgBox(s4, 0, 0, 1080, 1920);
@@ -351,6 +353,8 @@ function buildBabies(cfg) {
   const cry1 = 'M150,1300 C300,1260 420,1360 560,1250 C700,1140 820,980 930,760', cry2 = 'M150,820 C300,760 420,820 560,900 C700,980 820,1180 930,1380';
   const ghostP = h('path', { d: 'M150,1060 C350,960 560,1160 930,1060', fill: 'none', stroke: '#C9BFB0', 'stroke-width': 12, 'stroke-linecap': 'round', 'stroke-dasharray': '2 22', opacity: 0 }, sv4);
   T(w(4, 5) - .2, .5, k => ghostP.setAttribute('opacity', k), 'out');
+  const peek = svgBox(s4, 0, 0, 1080, 1920); const pk1 = baby(peek, 300, 1700, .42, 'beret'), pk2 = baby(peek, 780, 1700, .42, 'beanie'); [pk1, pk2].forEach((b, i) => T(B[4].t0 + i * .15, .5, (k, r) => b.g.setAttribute('transform', `translate(${i ? 780 : 300},${1700 + 300 * (1 - E.back(r))}) scale(.42)`), 'lin'));
+  ticks.push(t => { if (t > B[4].t0 + .6) [pk1, pk2].forEach((b, i) => babySet(peek, b, t + i, t > w(4, 7))); });
   T(B[6].t0 - .3, .3, k => ghostP.setAttribute('opacity', 1 - k), 'out');
   const mkCurve = (d, col) => { const p = h('path', { d, fill: 'none', stroke: col, 'stroke-width': 22, 'stroke-linecap': 'round', pathLength: 1, 'stroke-dasharray': 1, 'stroke-dashoffset': 1, opacity: 0 }, sv4); const pm = h('path', { d, fill: 'none', stroke: 'none' }, sv4); return { p, pm }; };
   const c1 = mkCurve(cry1, '#2E4FA0'), c2 = mkCurve(cry2, '#D7263D');
@@ -390,19 +394,19 @@ function buildBabies(cfg) {
     const x = 210 + rr * 360, y = 920 + Math.sin(rr * Math.PI * 2 + i) * 90 + rr * 220; n.style.opacity = Math.sin(Math.PI * rr); at(n, x, y, .6 + .5 * Math.sin(Math.PI * rr), Math.sin(t * 3 + i) * 14); }));
   cue(tN0 + .2, 'chime');
   // words vs music
-  const wd = div(s5, `left:0;top:0;padding:10px 36px 18px;background:#fff;border:6px solid ${K.ink};border-radius:40px;font:italic 600 70px 'EB Garamond';color:${K.ink};opacity:0`, 'bonjour · hallo');
+  const wd = div(s5, `left:0;top:0;padding:10px 36px 18px;background:#fff;border:6px solid ${K.ink};border-radius:40px;font:italic 600 90px 'EB Garamond';color:${K.ink};opacity:0`, 'bonjour · hallo');
   const strike = div(wd, `left:20px;top:50%;height:10px;width:0;background:${K.rust};border-radius:5px`);
   T(B[10].t0 - .15, .45, (k, r) => { wd.style.opacity = clamp(r * 3); at(wd, 540, 650, Math.max(0, E.back(r))); }, 'lin');
   T(w(10, 2), .35, k => strike.style.width = `calc(${k * 100}% - 40px)`, 'out'); cue(w(10, 2), 'scratch');
   const mus = div(s5, `left:0;top:0;font:700 150px 'DejaVu Sans';color:${K.plum};opacity:0`, '♪♫♪');
-  T(w(10, 4) - .1, .5, (k, r) => { mus.style.opacity = k; at(mus, 540, 1650, Math.max(0, E.back(r)), Math.sin(r * 12) * 6); }, 'lin'); cue(w(10, 4), 'chime');
+  T(w(10, 4) - .1, .5, (k, r) => { mus.style.opacity = k; at(mus, 540, 1650, Math.max(0, E.back(r)), Math.sin(r * 12) * 6); }, 'lin'); cue(B[10].t0 + .3, 'chime');
   // S6: both babies "singing" accents, first word
   const s6 = sceneDiv(root, K.mustard, 6); iris(s6, B[11].t0 - .3, 540, 1240, .6);
   const rays = div(s6, `left:-460px;top:-40px;width:2000px;height:2000px;background:repeating-conic-gradient(from 0deg at 50% 50%, rgba(255,255,255,.28) 0deg 10deg, transparent 10deg 20deg)`);
   ticks.push(t => at(rays, 540, 1150, 1, t * 10));
   const sv6 = svgBox(s6, 0, 0, 1080, 1920);
-  const x1 = baby(sv6, 290, 1260, .95, 'beret'), x2 = baby(sv6, 790, 1260, .95, 'beanie');
-  ticks.push(t => [[x1, 290], [x2, 790]].forEach(([b, x], i) => { babySet(sv6, b, t + i, t > w(12, 0) - .2); b.g.setAttribute('transform', `translate(${x},${1260 + Math.abs(Math.sin(t * 3 + i)) * -16}) scale(.95)`); }));
+  const x1 = baby(sv6, 290, 1260, 1.3, 'beret'), x2 = baby(sv6, 790, 1260, 1.3, 'beanie');
+  ticks.push(t => [[x1, 290], [x2, 790]].forEach(([b, x], i) => { babySet(sv6, b, t + i, t > w(12, 0) - .2); b.g.setAttribute('transform', `translate(${x},${1250 + Math.abs(Math.sin(t * 3 + i)) * -16}) scale(1.3)`); }));
   const fw = div(s6, `left:0;top:0;padding:12px 40px 20px;background:#fff;border:6px solid ${K.ink};border-radius:46px;font:italic 700 74px 'EB Garamond';color:${K.ink};opacity:0`, 'first word?' + `<div style="position:absolute;left:50%;bottom:-24px;width:30px;height:30px;background:#fff;border-right:6px solid ${K.ink};border-bottom:6px solid ${K.ink};transform:translateX(-50%) rotate(45deg)"></div>`);
   T(w(11, 5) - .1, .45, (k, r) => { fw.style.opacity = clamp(r * 3); at(fw, 540, 880, Math.max(0, E.back(r))); }, 'lin'); cue(w(11, 5), 'pop');
   T(B[12].t0, .3, k => fw.style.opacity = 1 - k, 'out');
@@ -438,13 +442,13 @@ function buildHebrew(cfg) {
   const hg = div(s1, 'left:0;top:0;width:300px;height:440px', `<svg width="300" height="440"><rect x="10" y="0" width="280" height="30" rx="10" fill="${K.wood}" stroke="${K.ink}" stroke-width="6"/><rect x="10" y="410" width="280" height="30" rx="10" fill="${K.wood}" stroke="${K.ink}" stroke-width="6"/><path d="M50,30 C50,150 140,180 140,220 C140,260 50,290 50,410 L250,410 C250,290 160,260 160,220 C160,180 250,150 250,30Z" fill="rgba(168,218,220,.35)" stroke="${K.cream}" stroke-width="6"/><path id="sandT" d="M80,60 L220,60 C210,140 160,170 150,215 C140,170 90,140 80,60Z" fill="${K.mustard}"/><path id="sandB" d="M60,405 L240,405 C230,350 190,330 150,320 C110,330 70,350 60,405Z" fill="${K.mustard}"/></svg>`);
   at(hg, 300, 1150);
   const sandT = hg.querySelector('#sandT'), sandB = hg.querySelector('#sandB');
-  ticks.push(t => { const r = clamp(t / (B[0].t1)); sandT.setAttribute('transform', `translate(150,215) scale(${1 - .8 * r}) translate(-150,-215)`); sandB.setAttribute('transform', `translate(150,405) scale(1,${.2 + .8 * r}) translate(-150,-405)`); at(hg, 300, 1150, 1, Math.sin(t * .8) * 3); });
-  const cnt = div(s1, `left:0;top:0;font:900 150px/1 Fraunces;color:${K.cream};text-align:center;white-space:nowrap`);
+  ticks.push(t => { const r = clamp(t / (B[0].t1)); sandT.setAttribute('transform', `translate(150,215) scale(${1 - .8 * r}) translate(-150,-215)`); sandB.setAttribute('transform', `translate(150,405) scale(1,${.2 + .8 * r}) translate(-150,-405)`); at(hg, 170, 1150, .8, Math.sin(t * .8) * 3); });
+  const cnt = div(s1, `left:0;top:0;font:900 118px/1 Fraunces;color:${K.cream};text-align:center;white-space:nowrap`);
   const cntL = div(s1, `left:0;top:0;font:italic 500 56px 'EB Garamond';color:#A8DADC;white-space:nowrap`);
   const tC = B[1].t0;
   ticks.push(t => { if (t < tC) { const y = Math.round(1700 * E.out(clamp((t - .2) / (w(0, 3) - .1)))); cnt.textContent = y.toLocaleString('en-US'); cntL.textContent = 'years of silence'; cnt.style.color = K.cream; s1.style.background = '#1D2B3A'; }
     else { const r = E.inOut(clamp((t - tC) / (w(1, 3) - tC + .3))); cnt.textContent = Math.round(9e6 * r).toLocaleString('en-US'); cntL.textContent = 'speakers today'; cnt.style.color = K.mustard; s1.style.background = mix('#1D2B3A', '#264653', r); }
-    at(cnt, 720, 1050, 1); at(cntL, 720, 1160); });
+    at(cnt, 650, 1050, 1); at(cntL, 650, 1160); });
   cue(.3, 'tick');
   const ppl = []; for (let i = 0; i < 60; i++) ppl.push(div(s1, `left:0;top:0;width:44px;height:64px;opacity:0`, `<svg width="44" height="64"><circle cx="22" cy="14" r="12" fill="${BLK[i % 7]}" stroke="${K.ink}" stroke-width="3"/><path d="M4,62 C4,36 40,36 40,62Z" fill="${BLK[(i + 3) % 7]}" stroke="${K.ink}" stroke-width="3"/></svg>`));
   ppl.forEach((p, i) => { const x = 80 + (i % 10) * 92, y = 1360 + Math.floor(i / 10) * 72; T(tC + i * .025, .35, (k, r) => { p.style.opacity = 1; at(p, x, y - 80 * (1 - bounceOut(r))); }, 'lin'); });
@@ -514,19 +518,21 @@ function buildHebrew(cfg) {
   const thing = (x, y, draw) => { const g = h('g', { opacity: 0 }, thingsSV); draw(g); return { g, x, y }; };
   const tNews = thing(260, 900, g => { h('rect', { x: -130, y: -100, width: 260, height: 200, rx: 10, fill: '#fff', ...OL }, g); h('rect', { x: -110, y: -80, width: 220, height: 40, fill: K.ink }, g); for (let i = 0; i < 4; i++) h('line', { x1: -110, y1: -10 + i * 28, x2: i % 2 ? 40 : 110, y2: -10 + i * 28, stroke: '#9A8E7E', 'stroke-width': 8 }, g); });
   const tBike = thing(800, 880, g => { [-90, 90].forEach(dx => h('circle', { cx: dx, cy: 30, r: 70, fill: 'none', ...OL, 'stroke-width': 8 }, g)); h('path', { d: 'M-90,30 L-20,-60 L60,-60 L90,30 M-20,-60 L10,30 L60,-60 M-40,-90 L0,-90', fill: 'none', stroke: K.rust, 'stroke-width': 10, 'stroke-linejoin': 'round', 'stroke-linecap': 'round' }, g); });
-  const tBook = thing(540, 1280, g => { h('path', { d: 'M-180,-110 L0,-80 L180,-110 L180,110 L0,140 L-180,110Z', fill: K.plum, ...OL }, g); h('path', { d: 'M-160,-95 L-5,-68 L-5,118 L-160,92Z M160,-95 L5,-68 L5,118 L160,92Z', fill: '#fff', ...OL, 'stroke-width': 4 }, g); });
-  const things = [tNews, tBike];
-  things.forEach((th, i) => T(w(7, 8) - .2 + i * .2, .5, (k, r) => { th.g.setAttribute('opacity', 1); th.g.setAttribute('transform', `translate(${th.x},${th.y}) scale(${Math.max(0, E.back(r))}) rotate(${Math.sin(r * 9) * 6})`); }, 'lin'));
-  cue(w(7, 8), 'pop');
+  const tBook = thing(540, 1330, g => { h('path', { d: 'M-180,-110 L0,-80 L180,-110 L180,110 L0,140 L-180,110Z', fill: K.plum, ...OL }, g); h('path', { d: 'M-160,-95 L-5,-68 L-5,118 L-160,92Z M160,-95 L5,-68 L5,118 L160,92Z', fill: '#fff', ...OL, 'stroke-width': 4 }, g); });
+  const tTrain = thing(270, 1290, g => { h('rect', { x: -150, y: -70, width: 230, height: 120, rx: 14, fill: K.teal, ...OL }, g); h('rect', { x: 60, y: -120, width: 90, height: 170, rx: 12, fill: K.rust, ...OL }, g); h('rect', { x: -120, y: -110, width: 40, height: 50, fill: K.ink }, g); [-110, -20, 90].forEach(x => h('circle', { cx: x, cy: 70, r: 34, fill: K.ink, stroke: K.cream, 'stroke-width': 6 }, g)); h('rect', { x: -110, y: -45, width: 60, height: 40, rx: 6, fill: K.cream, ...OL, 'stroke-width': 4 }, g); h('rect', { x: -20, y: -45, width: 60, height: 40, rx: 6, fill: K.cream, ...OL, 'stroke-width': 4 }, g); });
+  const tIce = thing(800, 1290, g => { h('path', { d: 'M-60,-20 L60,-20 L0,160Z', fill: K.wood, ...OL }, g); h('circle', { cx: -30, cy: -50, r: 55, fill: K.coral, ...OL }, g); h('circle', { cx: 35, cy: -50, r: 55, fill: '#F7F0E6', ...OL }, g); h('circle', { cx: 0, cy: -110, r: 55, fill: K.plum, ...OL }, g); });
+  const things = [tNews, tBike, tTrain, tIce];
+  things.forEach((th, i) => T(B[7].t0 + .1 + i * .45, .5, (k, r) => { th.g.setAttribute('opacity', 1); th.g.setAttribute('transform', `translate(${th.x},${th.y}) scale(${Math.max(0, E.back(r))}) rotate(${Math.sin(r * 9) * 6})`); }, 'lin'));
+  [0, 1, 2, 3].forEach(i => cue(B[7].t0 + .2 + i * .45, 'pop'));
   const qs = things.map(th => { const q = div(s6, `left:0;top:0;font:900 120px Fraunces;color:${K.rust};opacity:0`, '?'); return { q, th }; });
-  qs.forEach(({ q, th }, i) => T(w(7, 9) + i * .15, .4, (k, r) => { q.style.opacity = k; at(q, th.x + 130, th.y - 140, Math.max(0, E.back(r))); }, 'lin'));
+  qs.forEach(({ q, th }, i) => T(w(7, 8) + i * .12, .4, (k, r) => { q.style.opacity = k; at(q, th.x + 130, th.y - 140, Math.max(0, E.back(r))); }, 'lin'));
   // invent: lightbulb
   const bulb = div(s6, 'left:0;top:0;width:200px;height:260px;opacity:0', `<svg width="200" height="260"><circle cx="100" cy="95" r="85" fill="#FFE36B" stroke="${K.ink}" stroke-width="7"/><rect x="62" y="175" width="76" height="55" rx="10" fill="#9A8E7E" stroke="${K.ink}" stroke-width="6"/><path d="M75,110 l15,-30 l20,30 l15,-30" fill="none" stroke="${K.ink}" stroke-width="6"/></svg>`);
   T(w(8, 2) - .15, .5, (k, r) => { bulb.style.opacity = clamp(r * 3); at(bulb, 540, 760, Math.max(0, E.back(r))); }, 'lin'); cue(w(8, 2), 'chime');
   sparkleBurst(s6, w(8, 2), 540, 740, 10, 220);
   ticks.push(t => { if (t > w(8, 2) + .4) bulb.style.filter = `drop-shadow(0 0 ${30 + 20 * Math.sin(t * 8)}px rgba(255,227,107,.9))`; });
   tBook.g.setAttribute('opacity', 0);
-  T(B[9].t0 - .3, .5, (k, r) => { tBook.g.setAttribute('opacity', 1); tBook.g.setAttribute('transform', `translate(540,1300) scale(${Math.max(0, E.back(r))})`); }, 'lin');
+  T(B[9].t0 - .3, .5, (k, r) => { tBook.g.setAttribute('opacity', 1); tBook.g.setAttribute('transform', `translate(540,1330) scale(${1.5 * Math.max(0, E.back(r))})`); }, 'lin');
   const card = (heb, en, col, x, y, t) => { const c = div(s6, `left:0;top:0;padding:14px 34px 18px;background:#fff;border:6px solid ${K.ink};border-radius:24px;text-align:center;opacity:0;box-shadow:0 10px 0 ${col}`, `<div style="font:700 86px ${HEB};color:${col};direction:rtl;line-height:1.1">${heb}</div><div style="font:italic 600 46px 'EB Garamond';color:${K.ink}">${en}</div>`);
     T(t - .1, .6, (k, r) => { c.style.opacity = clamp(r * 3); at(c, 540 + (x - 540) * E.out(r), 1250 + (y - 1250) * E.out(r), Math.max(0, E.back(r)), (x < 540 ? -6 : 6) * k); }, 'lin'); cue(t, 'pop'); return c; };
   card('עיתון', 'newspaper', K.rust, 300, 900, w(9, 0)); card('מילון', 'dictionary', K.teal, 780, 900, w(9, 1));
@@ -540,9 +546,13 @@ function buildHebrew(cfg) {
   // S7: son grows, first native speaker — speech bubble
   const s7 = sceneDiv(root, '#F3E9DC', 7); iris(s7, B[10].t0 - .3, 540, 1300, .6);
   const sv7 = svgBox(s7, 0, 0, 1080, 1920);
+  const rays7 = div(s7, `left:-460px;top:-40px;width:2000px;height:2000px;background:repeating-conic-gradient(from 0deg at 50% 50%, rgba(233,180,76,.3) 0deg 10deg, transparent 10deg 20deg)`); s7.insertBefore(rays7, sv7);
+  ticks.push(t => at(rays7, 540, 1250, 1, t * 10));
+  const fl7 = 'אבגדהוזחטיכלמנ'.split('').map((c, i) => div(s7, `left:0;top:0;font:700 ${70 + rnd(i, 3) * 40}px ${HEB};color:${BLK[i % 7]};opacity:.85`, c));
+  ticks.push(t => fl7.forEach((l, i) => { const a = i / 14 * Math.PI * 2 + t * .4; at(l, 540 + Math.cos(a) * 420, 1200 + Math.sin(a) * 300, 1, Math.sin(t + i) * 15); }));
   const kidG = boyHead(sv7, 540, 1250, 1.2, false);
   const sp = div(s7, `left:0;top:0;padding:14px 44px 26px;background:#fff;border:7px solid ${K.ink};border-radius:56px;font:700 120px ${HEB};color:${K.rust};direction:rtl;opacity:0`, 'עברית!' + `<div style="position:absolute;left:30%;bottom:-28px;width:34px;height:34px;background:#fff;border-right:7px solid ${K.ink};border-bottom:7px solid ${K.ink};transform:rotate(45deg)"></div>`);
-  T(w(10, 4) - .1, .5, (k, r) => { sp.style.opacity = clamp(r * 3); at(sp, 600, 880, Math.max(0, E.back(r))); }, 'lin'); cue(w(10, 4), 'chime');
+  T(B[10].t0 + .2, .5, (k, r) => { sp.style.opacity = clamp(r * 3); at(sp, 600, 880, Math.max(0, E.back(r))); }, 'lin'); cue(B[10].t0 + .3, 'chime');
   const badge = div(s7, `left:0;top:0;width:220px;height:220px;border-radius:50%;background:${K.mustard};border:7px solid ${K.ink};display:flex;flex-direction:column;align-items:center;justify-content:center;opacity:0;line-height:1`, `<div style="font:900 100px Fraunces;color:${K.ink}">#1</div><div style="font:600 30px Outfit;color:${K.ink}">native speaker</div>`);
   T(w(10, 6) - .1, .5, (k, r) => { badge.style.opacity = clamp(r * 3); at(badge, 860, 1480, Math.max(0, E.back(r)), 10); }, 'lin'); cue(w(10, 6), 'stamp');
   ticks.push(t => kidG.setAttribute('transform', `translate(540,${1250 + Math.abs(Math.sin(t * 3)) * -10}) scale(1.2)`));
