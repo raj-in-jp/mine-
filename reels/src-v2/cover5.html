@@ -1,0 +1,34 @@
+<!doctype html><html><head><meta charset="utf-8"><style>
+html,body{margin:0}
+#c{position:relative;width:1080px;height:1920px;overflow:hidden;font-family:"EB Garamond";color:#F7F0E6;background:linear-gradient(#0B2233,#1E4A5C 60%,#3E7383)}
+.t{position:absolute;left:0;right:0;text-align:center}
+.mk{background:linear-gradient(#C8553D,#C8553D) no-repeat 0 90%/100% 34%;padding:0 10px}
+.pol{position:absolute;padding:26px 26px 90px;background:#FBF7EF;box-shadow:0 30px 60px rgba(0,0,0,.5);border-radius:6px}
+.pol .ph{width:100%;height:100%;background-size:cover}
+.tape{position:absolute;width:150px;height:50px;background:rgba(233,180,76,.8)}
+.star{position:absolute;border-radius:50%;background:#fff}
+</style></head><body><div id="c"></div>
+<script>
+const v=new URLSearchParams(location.search).get('v')||'a', c=document.getElementById('c');
+const add=h=>c.insertAdjacentHTML('beforeend',h);
+for(let i=0;i<60;i++){const r=(Math.sin(i*91.7)*1e4)%1, q=(Math.sin(i*13.3)*1e4)%1;add(`<div class="star" style="left:${Math.abs(r)*1080}px;top:${Math.abs(q)*1500}px;width:${3+i%4*2}px;height:${3+i%4*2}px;opacity:${.3+(i%5)/7}"></div>`)}
+add(`<svg style="position:absolute;left:0;top:0" width="1080" height="1920"><defs><linearGradient id="au" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#8FF0C0" stop-opacity="0"/><stop offset=".5" stop-color="#7DE8B5" stop-opacity=".75"/><stop offset="1" stop-color="#B58BE0" stop-opacity="0"/></linearGradient></defs>
+<path d="M-100,820 C150,700 350,900 560,780 C760,660 900,820 1180,720" fill="none" stroke="url(#au)" stroke-width="120" stroke-linecap="round"/>
+<path d="M-100,950 C200,860 420,1010 640,900 C820,820 960,930 1180,880" fill="none" stroke="url(#au)" stroke-width="70" stroke-linecap="round" opacity=".7"/>
+<path d="M-40,1560 L180,1260 L300,1380 L470,1160 L640,1400 L780,1240 L1120,1580Z" fill="#DCE9EE" stroke="#231F1B" stroke-width="6" stroke-linejoin="round"/>
+<rect x="-20" y="1550" width="1120" height="400" fill="#EEF5F7" stroke="#231F1B" stroke-width="6"/></svg>`);
+if(v==='a'){
+  add(`<div class="t" style="top:280px;font:600 30px Inter;letter-spacing:.32em;color:#E9B44C">THE LAST SPEAKER</div>`);
+  add(`<div class="t" style="top:335px;font:500 112px/1.04 'EB Garamond'">When she died,<br>her <span class="mk" style="font-style:italic;font-weight:700">language</span> died too</div>`);
+  add(`<div class="pol" style="left:200px;top:640px;width:680px;height:640px;transform:rotate(-4deg)"><div class="ph" style="background-image:url(img/msj_red.jpg);background-size:auto 135%;background-position:4% 92%;filter:grayscale(.3)"></div><div class="tape" style="left:-30px;top:-14px;transform:rotate(-10deg)"></div><div class="tape" style="right:-30px;top:-14px;transform:rotate(10deg)"></div></div>`);
+  add(`<div style="position:absolute;left:640px;top:1200px;padding:8px 30px 12px;border:9px solid #C8553D;border-radius:16px;font:900 92px Fraunces;color:#C8553D;background:rgba(251,247,239,.92);transform:rotate(8deg)">2008</div>`);
+  add(`<div class="t" style="top:1420px"><span style="display:inline-block;padding:8px 44px 16px;background:#264653;border:6px solid #231F1B;border-radius:999px;font:italic 700 80px 'EB Garamond';color:#E9B44C">…almost.</span></div>`);
+}
+if(v==='b'){
+  add(`<div class="t" style="top:280px;font:600 30px Inter;letter-spacing:.32em;color:#E9B44C">EYAK · ALASKA</div>`);
+  add(`<div class="t" style="top:335px;font:500 120px/1.02 'EB Garamond'">The <span class="mk" style="font-style:italic;font-weight:700">last</span> person<br>who spoke it</div>`);
+  add(`<div class="pol" style="left:230px;top:650px;width:620px;height:720px;transform:rotate(3deg)"><div class="ph" style="background-image:url(img/msj_bw.jpg);background-position:50% 30%"></div><div class="tape" style="left:-30px;top:-14px;transform:rotate(-10deg)"></div><div class="tape" style="right:-30px;top:-14px;transform:rotate(10deg)"></div></div>`);
+  add(`<div class="t" style="top:1500px"><span style="display:inline-block;padding:8px 40px 16px;background:#264653;border:6px solid #231F1B;border-radius:999px;font:italic 600 58px 'EB Garamond';color:#E9B44C">Then a 12-year-old brought it back.</span></div>`);
+}
+add(`<div class="t" style="top:1660px;font:italic 500 46px 'EB Garamond';color:#231F1B">@wordology.lab</div>`);
+</script></body></html>
