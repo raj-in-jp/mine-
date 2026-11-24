@@ -112,7 +112,7 @@ function chrome(no, title) {
   const ch = document.getElementById('chrome');
   h('div', { class: 'frame' }, ch);
   h('div', { class: 'frame2' }, ch);
-  const ft = h('div', { class: 'foot' }, ch, '<span class="fl"></span>a word a day<span class="fl"></span>');
+  const ft = h('div', { class: 'foot' }, ch, '<span class="fl"></span>@wordology.lab<span class="fl"></span>');
   ticks.push(t => { ft.style.opacity = .9 * E.out(clamp((t - .4) / .8)); });
   const tag = h('div', { class: 'tag' }, ch, `<span class="dot"></span>WORD ORIGINS <span class="no">No. ${no}</span>`);
   ticks.push(t => { tag.style.opacity = E.out(clamp(t / .6)); });
@@ -223,8 +223,9 @@ function cta(parent, t0, line1 = 'Which word should I do next?') {
   const ar = h('path', { d: 'M50,10 C20,70 80,120 50,190 M22,160 L50,195 L78,160', fill: 'none', stroke: C.red, 'stroke-width': 7, 'stroke-linecap': 'round', 'stroke-linejoin': 'round', pathLength: 1, 'stroke-dasharray': 1 }, svg);
   anim(ar, 'draw', t0 + .6, .9, { ease: 'inOut' });
   ticks.push(t => { if (t > t0 + 1.5) svg.style.transform = `translateY(${Math.sin((t - t0) * 5) * 10}px)`; });
-  const f = h('div', { class: 'follow', style: 'top:1180px' }, parent, '<span>+</span> Follow for a new word every day');
+  const f = h('div', { class: 'follow', style: 'top:1180px' }, parent, '<span>+</span> Follow @wordology.lab');
   anim(f, 'pop', t0 + 1.1, .6, { from: .7, cue: 'pop' });
+  anim(text(parent, 'a new word every day', 'top:1300px;left:0;right:0;text-align:center;font:italic 400 44px "Playfair Display";color:var(--soft)'), 'fadeUp', t0 + 1.4, .6);
 }
 
 function rule(parent, x, y, w, t0, color = C.red) {
