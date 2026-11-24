@@ -1,0 +1,59 @@
+<!doctype html>
+<html><head><meta charset="utf-8">
+<style>
+html,body{margin:0;background:#000}
+#stage{position:relative;width:1080px;height:1920px;overflow:hidden;background:#EFE6DA;font-family:"EB Garamond"}
+.scene{position:absolute;inset:0;transform-origin:50% 45%;display:none}
+.navyscene{background:#2E4560}
+.sent{position:absolute;left:100px;top:230px;width:880px;font:400 88px/1.18 "EB Garamond";color:#231F1B;letter-spacing:-.005em}
+.sent.navy{top:auto;bottom:auto;top:640px;text-align:center;left:90px;width:900px;font-size:92px;color:#F7F0E6}
+.w{display:inline-block;opacity:0;will-change:transform}
+.w.em{font-style:italic;font-weight:700;color:#A63D2A;font-size:1.12em;line-height:1}
+.navy .w.em{color:#E9A47F}
+.big{position:absolute;left:50%;transform:translate(-50%,-50%);font-family:"EB Garamond";font-weight:500;color:#231F1B;line-height:1;white-space:nowrap;opacity:0}
+.split{display:flex;align-items:baseline}
+.part{position:relative;display:inline-block}
+.sub{position:absolute;left:50%;top:100%;transform:translate(-50%,0);font:italic 400 60px "EB Garamond";color:#7A6F64;white-space:nowrap;opacity:0;margin-top:20px}
+.mch{display:inline-block;vertical-align:bottom;white-space:pre}
+.lab{position:absolute;font:italic 500 56px "EB Garamond";color:#7A6F64;opacity:0}
+.mapt{font-family:"EB Garamond";font-style:italic;font-weight:600;fill:#231F1B}
+.mapt.hot{fill:#A63D2A;font-weight:700}
+.maps{font-style:italic;font-weight:400;fill:#7A6F64}
+.pill{position:absolute;left:50%;transform:translateX(-50%);font:600 44px "EB Garamond";color:#F7F0E6;background:#2E4560;border-radius:999px;padding:18px 56px 24px;opacity:0}
+#foot{position:absolute;left:0;right:0;top:1650px;text-align:center;font:italic 500 44px "EB Garamond";z-index:5}
+#bar{display:none}
+.cw{display:inline-block;opacity:0}
+.cem{font-style:italic;font-weight:700;color:#C8553D;background:linear-gradient(#F3D27F,#F3D27F) no-repeat 0 88%/0% 42%;padding:0 6px;margin:0 -6px}
+#foot{z-index:100!important}
+.root,.layer{position:absolute;inset:0}
+#cam{position:absolute;left:0;top:0;width:0;height:0;transform-origin:0 0}
+.gl{position:absolute;left:0;top:0;white-space:nowrap;line-height:1}
+.key{position:absolute;left:0;top:0;width:330px;height:330px;box-sizing:border-box;border:6px solid #231F1B;border-radius:44px;background:#F7F0E6;box-shadow:0 18px 0 #B9A88A,0 26px 30px rgba(0,0,0,.18);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px}
+.key .ka{font:400 150px/1 "Libre Caslon Text";color:#A63D2A}
+.key .k7{font:500 80px/1 "EB Garamond";color:#7A6F64;order:2}
+.cell{position:absolute;display:flex;align-items:center;justify-content:center;font:500 84px "EB Garamond";color:#231F1B;opacity:0;box-sizing:border-box}
+.cell.slot{border:5px dashed #A63D2A;border-radius:14px}
+.ampc{font:italic 600 104px "EB Garamond";color:#A63D2A;display:inline-block}
+.chalk{position:absolute;font:italic 500 190px "EB Garamond";color:#F1EADF;opacity:0}
+</style></head>
+<body>
+<svg width="0" height="0" style="position:absolute"><defs><filter id="goo"><feGaussianBlur in="SourceGraphic" stdDeviation="14" result="b"/><feColorMatrix in="b" mode="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 24 -10" result="g"/><feComposite in="SourceGraphic" in2="g" operator="atop"/></filter></defs></svg>
+<div id="stage"><div id="bar"></div><div id="foot">@wordology.lab</div></div>
+<script src="engine.js"></script>
+<script src="style2.js"></script>
+<script src="reels2.js"></script>
+<script src="reels3.js"></script>
+<script src="reels4.js"></script>
+<script>
+(async () => {
+  const r = new URLSearchParams(location.search).get('r') || 'nice';
+  MAP = await (await fetch('map.json')).json();
+  VO = await (await fetch(`vo/${r === 'amp3' ? 'amp2' : r}.json`)).json();
+  const S = await (await fetch('scripts.json')).json();
+  for (const f of ['400 80px "EB Garamond"', 'italic 700 80px "EB Garamond"', 'italic 600 80px "EB Garamond"', 'italic 500 80px "EB Garamond"', 'italic 400 80px "EB Garamond"', '500 80px "EB Garamond"', '600 80px "EB Garamond"', '400 80px "Libre Caslon Text"', '900 80px Fraunces', '400 80px "Bebas Neue"', '900 80px "Bodoni Moda"', '800 80px Inter', '700 80px Fredoka', '900 80px Cinzel', '800 80px Outfit', '900 80px Rubik', '700 80px Oswald']) await document.fonts.load(f);
+  if (r === 'amp3') buildAmp3(S['amp2']); else if (r === 'amp2') buildAmp2(S[r]); else build(r, S[r], VIS[r]);
+  document.getElementById('stage').appendChild(document.getElementById('foot'));
+  render(0); window.READY = true;
+})();
+</script>
+</body></html>
