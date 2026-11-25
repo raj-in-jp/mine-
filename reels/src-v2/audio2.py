@@ -85,6 +85,11 @@ for c in [c for c in cfg['cues'] if c['type'] != 'whoosh']:
     x, off = sfx(c['type']); st = int((c['t'] + off) * SR)
     if st < 0: x = x[-st:]; st = 0
     e = min(n, st + len(x)); mix[st:e] += x[:e - st] * .55
+import os
+if os.path.exists(f'cry-{reel}.wav'):
+    cr, csr = sf.read(f'cry-{reel}.wav'); cr = np.interp(np.arange(int(len(cr) * SR / csr)), np.arange(len(cr)) * SR / csr, cr)
+    g = np.ones(len(cr)) * float(os.environ.get('CRYG', '.55')); vs = int(.35 * SR); g[vs:] *= float(os.environ.get('CRYDUCK', '.5'))
+    mix[:len(cr)] += cr[:n] * g[:n]; mix[:int(len(cr))] *= np.r_[np.linspace(.4, 1, int(.35 * SR)), np.ones(max(0, len(cr) - int(.35 * SR)))][:len(cr)] ** 0 
 v = np.interp(np.arange(n), np.arange(len(vo)) * SR / vsr, vo)[:n]
 mix += v * 1.0
 mix = np.tanh(mix * 1.1) * .9
