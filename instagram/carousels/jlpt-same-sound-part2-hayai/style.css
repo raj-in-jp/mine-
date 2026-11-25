@@ -1,0 +1,68 @@
+@font-face{font-family:Archivo;src:url(fonts/ArchivoBlack.ttf)}
+@font-face{font-family:NotoJP;src:url(fonts/NotoSansJP-900.ttf);font-weight:900}
+@font-face{font-family:NotoJP;src:url(fonts/NotoSansJP-700.ttf);font-weight:700}
+@font-face{font-family:NotoJP;src:url(fonts/NotoSansJP-500.ttf);font-weight:500}
+@font-face{font-family:Min;src:url(fonts/ShipporiMinchoB1.ttf)}
+:root{--bg:#F1E3C2;--ink:#2B2118;--acc:#D9572B;--teal:#1F6F78;--card:#FFF6E0;--muted:#6E5B44}
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:#888;font-family:Archivo,NotoJP,'Noto Color Emoji',sans-serif;color:var(--ink)}
+.s{position:relative;width:1080px;height:1350px;overflow:hidden;background:var(--bg);margin-bottom:20px}
+.s::before{content:"";position:absolute;inset:0;background-image:radial-gradient(rgba(60,40,20,.16) 2px,transparent 2.5px);background-size:16px 16px;opacity:.6}
+.grain{position:absolute;inset:0;mix-blend-mode:multiply;opacity:.35;background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='300' height='300'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='3' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 .45  0 0 0 0 .40  0 0 0 0 .32  0 0 0 .6 0'/></filter><rect width='300' height='300' filter='url(%23n)'/></svg>")}
+.hand{position:absolute;left:60px;bottom:44px;font-size:30px;color:var(--muted);z-index:5}
+.num{position:absolute;right:60px;top:52px;font-size:30px;color:var(--muted);z-index:5}
+.tag{position:absolute;left:60px;top:52px;font-size:28px;letter-spacing:3px;color:var(--acc);z-index:5}
+.swipe{position:absolute;right:60px;bottom:40px;font-size:34px;color:var(--acc);z-index:5}
+.h{position:absolute;left:70px;right:70px;text-align:center;line-height:1.08;z-index:3}
+.sub{color:var(--muted)}
+.jp{font-family:NotoJP;font-weight:700}
+.o{color:var(--acc)} .t{color:var(--teal)}
+.card{background:var(--card);border:6px solid var(--ink);box-shadow:10px 10px 0 var(--ink);position:absolute;z-index:3}
+.sound{position:absolute;left:50%;transform:translateX(-50%);background:var(--ink);color:var(--bg);font-family:NotoJP;font-weight:900;font-size:120px;line-height:1;padding:18px 60px 26px;border-radius:999px;z-index:3;white-space:nowrap}
+.sound.sm{font-size:96px;padding:14px 56px 22px}
+.fan{position:absolute;top:900px;left:0;right:0;display:flex;justify-content:center;gap:40px;z-index:3}
+.opt{font-family:Min;font-size:92px;background:var(--card);border:6px solid var(--ink);box-shadow:8px 8px 0 var(--ink);padding:12px 30px;position:relative}
+.opt::after{content:"?";position:absolute;right:-18px;top:-26px;width:54px;height:54px;border-radius:50%;background:var(--acc);color:#fff;font-family:Archivo;font-size:36px;display:flex;align-items:center;justify-content:center;border:4px solid var(--ink)}
+.q{left:90px;right:90px;top:520px;padding:40px 44px}
+.qh{font-family:NotoJP;font-weight:700;font-size:32px;color:var(--muted);margin-bottom:22px}
+.qs{font-size:58px;margin-bottom:28px}
+.qs u{text-decoration-color:var(--acc);text-decoration-thickness:6px;text-underline-offset:10px}
+.qo{display:flex;gap:30px;font-size:50px;font-family:Min}
+.qo span{border:4px solid var(--ink);padding:6px 18px;background:#fff}
+.row{left:60px;right:60px;display:flex;align-items:center;gap:30px;padding:0 30px}
+.kj{flex:none;width:250px;white-space:nowrap;font-family:Min;font-size:150px;line-height:1;color:var(--ink);text-align:center}
+.kj span{font-family:NotoJP;font-weight:500;font-size:44px;color:var(--muted)}
+.info{flex:1;min-width:0}
+.mean{font-size:44px;color:var(--acc);line-height:1.1;margin-bottom:8px}
+.sent{font-size:40px;font-weight:500;margin-bottom:2px}
+.sent b{font-weight:900;color:var(--teal)}
+.eng{font-family:Archivo;font-size:28px;color:var(--muted);margin-bottom:10px}
+.hint{display:inline-block;font-family:Archivo,NotoJP;font-size:28px;background:#fff;border:3px solid var(--ink);border-radius:999px;padding:4px 18px}
+.qz{left:90px;right:90px;height:210px;display:flex;align-items:center;gap:34px;padding:0 36px}
+.qz .qs{font-size:46px;margin-bottom:18px;white-space:nowrap}.qz .qo{font-size:38px;gap:18px;white-space:nowrap}.qo span{white-space:nowrap}
+.qn{flex:none;width:90px;height:90px;border-radius:50%;background:var(--acc);color:#fff;font-size:52px;display:flex;align-items:center;justify-content:center;border:5px solid var(--ink)}
+.recap{left:70px;right:70px;top:330px;padding:20px 34px}
+.rr{display:flex;align-items:center;gap:22px;padding:20px 0;border-bottom:4px dashed rgba(43,33,24,.25)}
+.rr:last-child{border-bottom:none}
+.rs{flex:none;width:210px;background:var(--ink);color:var(--bg);text-align:center;border-radius:999px;font-size:44px;font-weight:900;padding:4px 0 10px}
+.rc{font-size:35px;font-weight:700;white-space:nowrap}
+.btn{border:6px solid var(--ink);box-shadow:8px 8px 0 var(--ink);font-size:52px;padding:22px 44px}
+ruby{ruby-position:over} rt{font-family:NotoJP;font-weight:500;font-size:.42em;color:var(--muted);letter-spacing:0}
+.big{position:absolute;left:70px;right:70px;top:150px;height:330px;display:flex;align-items:center;gap:40px;padding:0 44px}
+.bk{font-family:Min;font-size:230px;line-height:1;white-space:nowrap}
+.bk span{font-family:NotoJP;font-weight:500;font-size:70px;color:var(--muted)}
+.bm{font-size:58px;color:var(--acc);line-height:1.05}
+.bp{display:inline-block;margin-top:18px;font-family:NotoJP;font-weight:700;font-size:36px;background:var(--ink);color:var(--bg);padding:6px 22px;border-radius:999px}
+.ex{left:70px;right:70px;padding:26px 40px}
+.ex .js{font-family:NotoJP;font-weight:500;font-size:56px;line-height:1.75}
+.ex .js b{font-weight:900;color:var(--teal)}
+.ex .en{font-size:30px;color:var(--muted)}
+.tip{position:absolute;left:70px;right:70px;text-align:center;font-size:36px;z-index:3}
+.tip span{display:inline-block;background:#fff;border:4px solid var(--ink);border-radius:999px;padding:10px 30px;box-shadow:5px 5px 0 var(--ink)}
+.flow{left:70px;right:70px;padding:16px 36px}
+.fr{display:flex;align-items:center;gap:24px;padding:36px 0;border-bottom:4px dashed rgba(43,33,24,.25)}
+.fr:last-child{border-bottom:none}
+.fq{flex:1;font-size:40px}
+.fa{font-family:Min;font-size:84px;line-height:1;white-space:nowrap}
+.fa span{font-family:NotoJP;font-size:36px;color:var(--muted)}
+.arrow{font-size:50px;color:var(--acc)}
